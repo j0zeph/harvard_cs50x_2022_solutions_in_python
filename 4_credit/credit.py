@@ -21,6 +21,17 @@ def make_single_numbers(string_to_parse) -> list:
 		if item == " ":
 			continue
 		else:
-			parsed_list.append(int(item))
+			try:
+				parsed_list.append(int(item))
+			except ValueError:  # In case an invalid character was missed.
+				print("There was an error in the provided number.")
+				print("Please try again.\n")
+				break
 	return parsed_list
 
+
+def twice_every_other_from_second_last(list) -> list:
+	"""Returns a new list of numbers that are the result of multiplying
+	every other number in the provided list--starting from the second last
+	number--by 2"""
+	pass
