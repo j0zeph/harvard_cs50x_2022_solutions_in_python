@@ -12,3 +12,15 @@ def number_contains_errors(number) -> bool:
 	if found:
 		has_invalid = True
 	return has_invalid
+
+
+def make_single_numbers(string_to_parse) -> list:
+	"""Returns a list of integers, as a result of parsing the provided string"""
+	parsed_list = []
+	for item in string_to_parse:
+		if item == " ":
+			continue
+		else:
+			parsed_list.append(int(item))
+	return parsed_list
+
