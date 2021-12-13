@@ -19,6 +19,7 @@ def split_double_digits_into_singles(list_to_split) -> list:
 			single_digits.append(number)
 	return single_digits
 
+
 def double_numbers_in_list(list_to_multiply) -> list:
 	"""Returns a new list that is a result of multiplying every element
 	in the provided list."""
