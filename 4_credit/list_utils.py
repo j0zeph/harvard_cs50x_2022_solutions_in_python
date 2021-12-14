@@ -13,8 +13,10 @@ def split_double_digits_into_singles(list_to_split) -> list:
 	single_digits = []
 	for number in list_to_split:
 		if number > 9:
+			
 			# add left half of two-digit number
 			single_digits.append(number//10)
+			
 			# add right half of two-digit number
 			single_digits.append(number % 10)
 		else:
