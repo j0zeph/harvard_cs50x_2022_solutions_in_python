@@ -12,7 +12,7 @@ class CreditCardChecker(unittest.TestCase):
 		self.assertNotEqual([], ccc("5499 7400 0000 0057").make_into_ints())
 
 	def test_spaces_discarded_after_parsing(self):
-		# Checks that whitespace is discarded after parsing
+		"""Checks that white-spaces are discarded after parsing"""
 		self.assertIsInstance(ccc("378 282 246 310 005").make_into_ints()[3], int)
 		self.assertIsInstance(ccc("378  282  246 310 005").make_into_ints()[3], int)
 
@@ -20,5 +20,4 @@ class CreditCardChecker(unittest.TestCase):
 		"""Checks if a list with double-digit numbers in it, is properly
 		transformed into a list where the double digits have been split into
 		their single-digit components, and added back appropriately"""
-
-		# self.assertEqual([1,2,3,4,5], ccc(""))
+		pass
