@@ -33,6 +33,7 @@ def print_pyramid(height) -> None:
 	h = int(height)
 	for row in range(1, int(h)+1):
 		left_spaces = " "*(h-row)
+		
 		# hashes are mirrored on both sides
 		left_hashes = right_hashes = "#" * (h-(h-row))  
 		middle = " " * middle_spaces
