@@ -10,9 +10,6 @@ class CreditCardChecker:
 		self.credit_as_string = card_number
 		self.credit_as_number_list = self.make_into_ints()
 
-	# def make_card(self, card_number):
-	# 	self.credit_as_string = card_number
-
 	def has_errors(self) -> bool:
 		"""Checks whether this credit card number contains invalid characters.
 		Spaces are allowed"""
@@ -36,7 +33,7 @@ class CreditCardChecker:
 				else:
 					try:
 						list_of_ints.append(int(item))
-					except ValueError:  # In case an invalid character was missed.
+					except ValueError:
 						print("There was an error in the provided number.")
 						print("Please try again.\n")
 						break
