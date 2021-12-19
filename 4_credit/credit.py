@@ -41,9 +41,6 @@ class CreditCardChecker:
 		else:
 			return []
 
-	def split_by_every_other_from_end(self) -> None:
-		pass
-
 	def is_valid_credit_card_number(self) -> bool:
 		"""Returns whether or not this credit card number provided is a valid one"""
 		pass

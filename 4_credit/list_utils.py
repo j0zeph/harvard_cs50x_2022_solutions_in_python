@@ -32,3 +32,28 @@ def double_numbers_in_list(list_to_multiply) -> list:
 	for number in range(0, len(list_to_multiply)-1):
 		doubled_list.append(list_to_multiply[number] * 2)
 	return doubled_list
+
+
+def get_every_other_from_end(list_to_split) -> list:
+	"""Returns a list that is a result of getting every other element--starting
+	from the second-last, going backwards--in the provided list.
+	[1, 2, 3, 4, 5, 6] returns [1, 3, 5] for example.
+
+	It is assumed that the length of the list provided is greater than 1.
+	If not, an empty list is returned"""
+
+	every_other_from_end = []
+	list_length = len(list_to_split)
+
+	# Accessing second-last element with "-2" index
+	start_index = -2
+
+	# Do not go beyond the first element, when looking backwards
+	# The + 1 is for the sake of the range() function
+	stop_index = -(list_length + 1)
+	skip = -2
+
+	for index in range(start_index, stop_index, skip):
+		every_other_from_end.append(list_to_split[index])
+
+	return every_other_from_end
