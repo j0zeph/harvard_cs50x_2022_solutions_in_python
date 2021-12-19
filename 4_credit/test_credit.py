@@ -24,8 +24,8 @@ class ListUtilsChecker(unittest.TestCase):
 		"""Checks if a list with double-digit numbers in it, is properly
 		transformed into a list where the double digits have been split into
 		their single-digit components, and added back appropriately"""
-		self.assertEqual([1, 2, 8, 3, 5, 1, 0], lu.split_double_digits_into_singles
-																			([12, 8, 35, 10]))
+		split_list = lu.split_double_digits_into_singles([12, 8, 35, 10])
+		self.assertEqual([1, 2, 8, 3, 5, 1, 0], split_list)
 		self.assertEqual([1, 2], lu.split_double_digits_into_singles([12]))
 		self.assertEqual([], lu.split_double_digits_into_singles([]))
 
