@@ -33,3 +33,12 @@ class ListUtilsChecker(unittest.TestCase):
 		"""Checks if every element in the list is doubled.
 		Assumption: elements in this list are numbers"""
 		self.assertEqual([2, 4, 6, 8], lu.double_numbers_in_list([1, 2, 3, 4]))
+
+	def test_getting_every_other_from_second_last(self):
+		"""Checks that every other number, looking backwards (starting from the
+		second-last element in the list), is returned properly"""
+		self.assertEqual([9, 7], lu.get_every_other_from_end([6, 7, 8, 9, 10]))
+		self.assertEqual([], lu.get_every_other_from_end([]))
+
+		altered_list = lu.get_every_other_from_end(list("5499740000000057"))
+		self.assertEqual(['5', '0', '0', '0', '0', '7', '9', '5'], altered_list)
