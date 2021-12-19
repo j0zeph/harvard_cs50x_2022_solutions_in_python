@@ -29,7 +29,7 @@ def double_numbers_in_list(list_to_multiply) -> list:
 	"""Returns a new list that is a result of multiplying every element
 	in the provided list."""
 	doubled_list = []
-	for number in range(0, len(list_to_multiply)-1):
+	for number in range(0, len(list_to_multiply)):
 		doubled_list.append(list_to_multiply[number] * 2)
 	return doubled_list
 

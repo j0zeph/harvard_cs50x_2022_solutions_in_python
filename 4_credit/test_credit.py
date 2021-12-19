@@ -1,5 +1,6 @@
 from credit import CreditCardChecker as ccc
 import unittest
+import list_utils as lu
 
 
 class CreditCardChecker(unittest.TestCase):
@@ -16,8 +17,19 @@ class CreditCardChecker(unittest.TestCase):
 		self.assertIsInstance(ccc("378 282 246 310 005").make_into_ints()[3], int)
 		self.assertIsInstance(ccc("378  282  246 310 005").make_into_ints()[3], int)
 
+
+class ListUtilsChecker(unittest.TestCase):
+
 	def test_double_digit_lists_become_singles(self):
 		"""Checks if a list with double-digit numbers in it, is properly
 		transformed into a list where the double digits have been split into
 		their single-digit components, and added back appropriately"""
-		pass
+		self.assertEqual([1, 2, 8, 3, 5, 1, 0], lu.split_double_digits_into_singles
+																			([12, 8, 35, 10]))
+		self.assertEqual([1, 2], lu.split_double_digits_into_singles([12]))
+		self.assertEqual([], lu.split_double_digits_into_singles([]))
+
+	def test_doubling_each_element(self):
+		"""Checks if every element in the list is doubled.
+		Assumption: elements in this list are numbers"""
+		self.assertEqual([2, 4, 6, 8], lu.double_numbers_in_list([1, 2, 3, 4]))
