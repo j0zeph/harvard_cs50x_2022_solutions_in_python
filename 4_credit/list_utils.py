@@ -55,5 +55,6 @@ def get_every_other_from_end(list_to_split) -> list:
 
 	for index in range(start_index, stop_index, skip):
 		every_other_from_end.append(list_to_split[index])
+	every_other_from_end.reverse()
 
 	return every_other_from_end
