@@ -24,6 +24,7 @@ class ListUtilsChecker(unittest.TestCase):
 		"""Checks if a list with double-digit numbers in it, is properly
 		transformed into a list where the double digits have been split into
 		their single-digit components, and added back appropriately"""
+
 		split_list = lu.split_double_digits_into_singles([12, 8, 35, 10])
 		self.assertEqual([1, 2, 8, 3, 5, 1, 0], split_list)
 		self.assertEqual([1, 2], lu.split_double_digits_into_singles([12]))
@@ -34,7 +35,7 @@ class ListUtilsChecker(unittest.TestCase):
 		Assumption: elements in this list are numbers"""
 		self.assertEqual([2, 4, 6, 8], lu.double_numbers_in_list([1, 2, 3, 4]))
 
-	def test_getting_every_other_from_second_last(self):
+	def test_getting_every_other_from_some_negative_index(self):
 		"""Checks that every other number, looking backwards (starting from the
 		second-last element in the list), is returned properly"""
 
