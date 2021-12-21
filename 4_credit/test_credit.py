@@ -46,3 +46,11 @@ class ListUtilsChecker(unittest.TestCase):
 		every_othered_list = lu.get_every_other_from_end(input_list, -2)
 		expected_list = ['5', '9', '7', '0', '0', '0', '0', '5']
 		self.assertEqual(expected_list, every_othered_list)
+
+	def test_getting_every_other_then_doubling(self):
+		"""Gets every other element going backwards, then doubles them"""
+
+		input_list = [2, 4, 5, 6, 7, 9]
+		every_othered = lu.get_every_other_from_end(input_list, -2)
+		doubled = lu.double_numbers_in_list(every_othered)
+		self.assertEqual([4, 10, 14], doubled)
