@@ -15,7 +15,8 @@ class CreditCardChecker:
 		Spaces are allowed"""
 
 		has_invalid_character = False
-		found = re.search("[a-zA-Z/*+_{}()-/!@#$%^&=`~<>?|]", self.credit_as_string)
+		pattern_to_match = "[a-zA-Z/*+_{}()-/!@#$%^&=`~<>?|]"
+		found = re.search(pattern_to_match, self.credit_as_string)
 		if found:
 			has_invalid_character = True
 		return has_invalid_character
