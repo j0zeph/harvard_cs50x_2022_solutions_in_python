@@ -43,8 +43,20 @@ class CreditCardChecker:
 			return []
 
 	def is_valid_credit_card_number(self) -> bool:
-		"""Returns whether or not this credit card number provided is a valid one"""
-		pass
+		"""Returns whether or not this credit card number provided is valid"""
+
+		credit_number_as_list = self.credit_as_number_list
+		every_other = lu.get_every_other_from_end(credit_number_as_list, -2)
+		every_other_doubled = lu.double_numbers_in_list(every_other)
+		singles_made = lu.split_double_digits_into_singles(every_other_doubled)
+		singles_summed = lu.add_numbers_in_list(singles_made)
+
+		unmultiplied = lu.get_every_other_from_end(credit_number_as_list, -1)
+		unmultiplied_summed = lu.add_numbers_in_list(unmultiplied)
+
+		final_sum = singles_summed + unmultiplied_summed
+
+		return final_sum % 10 == 0
 
 	def get_card_issuer(self):
 		"""Returns the card issuer(if any), of this valid credit card"""
