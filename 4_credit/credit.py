@@ -11,15 +11,19 @@ class CreditCardChecker:
 		self.credit_as_number_list = self.make_into_ints()
 
 	def has_errors(self) -> bool:
-		"""Checks whether this credit card number contains invalid characters.
-		Spaces are allowed"""
+		"""Checks whether this credit card number contains errors.
+		Spaces are allowed within the number.
+		An empty card number is an error.
+		A card number with invalid characters is an error."""
 
-		has_invalid_character = False
-		pattern_to_match = "[a-zA-Z/*+_{}()-/!@#$%^&=`~<>?|]"
-		found = re.search(pattern_to_match, self.credit_as_string)
+		if len(str(self.credit_as_string).strip()) == 0:
+			return True
+
+		invalid_characters = "[a-zA-Z/*+_{}()-/!@#$%^&=`~<>?|]"
+		found = re.search(invalid_characters, self.credit_as_string)
 		if found:
-			has_invalid_character = True
-		return has_invalid_character
+			return True
+		return False
 
 	def make_into_ints(self) -> list:
 		"""Returns a list of integers after parsing the string
@@ -46,6 +50,10 @@ class CreditCardChecker:
 		"""Returns whether or not this credit card number provided is valid"""
 
 		credit_number_as_list = self.credit_as_number_list
+
+		if len(credit_number_as_list) == 0:
+			return False
+
 		every_other = lu.get_every_other_from_end(credit_number_as_list, -2)
 		every_other_doubled = lu.double_numbers_in_list(every_other)
 		singles_made = lu.split_double_digits_into_singles(every_other_doubled)
@@ -70,6 +78,10 @@ class CreditCardChecker:
 			(4, (13,16)): "VISA"}
 
 		card_number_length = len(self.credit_as_number_list)
+
+		if card_number_length == 0:
+			return "INVALID"
+
 		leading_number = self.credit_as_number_list[0]
 
 		for key in issuers:
