@@ -17,6 +17,27 @@ class CreditCardChecker(unittest.TestCase):
 		self.assertIsInstance(ccc("378 282 246 310 005").make_into_ints()[3], int)
 		self.assertIsInstance(ccc("378  282  246 310 005").make_into_ints()[3], int)
 
+	def test_valid_and_invalid_credit_card_numbers(self):
+		"""Checks that valid and invalid credit card numbers are reported
+		properly"""
+		valid_cards = [
+			"5499 7400 0000 0057",
+			"378282246310005",
+			"5105 1051 0510 5100"]
+
+		for card in valid_cards:
+			card = ccc(card)
+			self.assertTrue(card.is_valid_credit_card_number())
+
+		invalid_cards = [
+			"6011 1811 1111 1817",
+			"6011601160116612",
+			"370300000000002"]
+
+		for card in invalid_cards:
+			card = ccc(card)
+			self.assertFalse(card.is_valid_credit_card_number())
+
 
 class ListUtilsChecker(unittest.TestCase):
 
