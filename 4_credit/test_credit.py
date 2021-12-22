@@ -38,6 +38,25 @@ class CreditCardChecker(unittest.TestCase):
 			card = ccc(card)
 			self.assertFalse(card.is_valid_credit_card_number())
 
+	def test_correct_credit_card_issuers(self):
+		card_numbers = [
+			"3782 82246 310005", "3714 49635 398431",
+			"5499 7400 0000 0057", "5105 1051 0510 5100",
+			"4111 1111 1111 1111", "4012 8888 8888 1881",
+			"6011 1811 1111 1817", "6011601160116612"
+		]
+
+		expected_issuers = [
+			"AMEX", "AMEX",
+			"MASTERCARD", "MASTERCARD",
+			"VISA", "VISA",
+			"INVALID", "INVALID"
+		]
+
+		for number, issuer in zip(card_numbers, expected_issuers):
+			card = ccc(number)
+			self.assertEqual(card.get_card_issuer(), issuer)
+
 
 class ListUtilsChecker(unittest.TestCase):
 
