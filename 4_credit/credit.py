@@ -36,12 +36,7 @@ class CreditCardChecker:
 				if item == " ":
 					continue
 				else:
-					try:
-						list_of_ints.append(int(item))
-					except ValueError:
-						print("There was an error in the provided number.")
-						print("Please try again.\n")
-						break
+					list_of_ints.append(int(item))
 			return list_of_ints
 		else:
 			return []
