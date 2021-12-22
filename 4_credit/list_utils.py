@@ -55,3 +55,15 @@ def get_every_other_from_end(list_to_split, starting_index) -> list:
 	every_other_from_end.reverse()
 
 	return every_other_from_end
+
+
+def remove_spaces(string_to_compact):
+	"""Takes a string with whitespaces, and returns the same string without
+	whitespaces."""
+
+	compact_string = ""
+	for character in string_to_compact:
+		if character not in " ":
+			compact_string += character
+
+	return compact_string
