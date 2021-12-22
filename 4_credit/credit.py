@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import re
-import list_utils
+import list_utils as lu
 
 
 class CreditCardChecker:
@@ -51,10 +51,10 @@ class CreditCardChecker:
 		singles_made = lu.split_double_digits_into_singles(every_other_doubled)
 		singles_summed = lu.add_numbers_in_list(singles_made)
 
-		unmultiplied = lu.get_every_other_from_end(credit_number_as_list, -1)
-		unmultiplied_summed = lu.add_numbers_in_list(unmultiplied)
+		un_multiplied = lu.get_every_other_from_end(credit_number_as_list, -1)
+		un_multiplied_summed = lu.add_numbers_in_list(un_multiplied)
 
-		final_sum = singles_summed + unmultiplied_summed
+		final_sum = singles_summed + un_multiplied_summed
 
 		return final_sum % 10 == 0
 
