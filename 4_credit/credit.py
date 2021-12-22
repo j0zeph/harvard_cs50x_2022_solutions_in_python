@@ -58,6 +58,25 @@ class CreditCardChecker:
 
 		return final_sum % 10 == 0
 
-	def get_card_issuer(self):
-		"""Returns the card issuer(if any), of this valid credit card"""
+	def get_card_issuer(self) -> str:
+		"""Returns the card issuer(if any), of this valid credit card.
+		Where no issuer exists, INVALID is returned"""
+
+		# issuers listed in the format
+		# (starting digit, (possible length of card number)): "ISSUER"
+		issuers = {
+			(3, (15,)): "AMEX",
+			(5, (16,)): "MASTERCARD",
+			(4, (13,16)): "VISA"}
+
+		card_number_length = len(self.credit_as_number_list)
+		leading_number = self.credit_as_number_list[0]
+
+		for key in issuers:
+			leading_number_matches = leading_number in key
+			length_matches = card_number_length in key[1]
+			if leading_number_matches and length_matches:
+				return issuers[key]
+
+		return "INVALID"
 		pass
