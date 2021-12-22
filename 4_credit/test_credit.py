@@ -39,6 +39,9 @@ class CreditCardChecker(unittest.TestCase):
 			self.assertFalse(card.is_valid_credit_card_number())
 
 	def test_correct_credit_card_issuers(self):
+		"""Checks that valid credit card numbers return the correct issuer.
+		Returns `INVALID` if no issuer exists."""
+
 		card_numbers = [
 			"3782 82246 310005", "3714 49635 398431",
 			"5499 7400 0000 0057", "5105 1051 0510 5100",
@@ -58,7 +61,7 @@ class CreditCardChecker(unittest.TestCase):
 			self.assertEqual(card.get_card_issuer(), issuer)
 
 	def test_that_empty_credit_card_numbers_are_invalid(self):
-		"""Checks that an empty credit card number is INVALID"""
+		"""Checks that an empty credit card number is `INVALID`"""
 		card = ccc("")
 		self.assertEqual("INVALID", card.get_card_issuer())
 

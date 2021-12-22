@@ -9,7 +9,8 @@ def add_numbers_in_list(list_to_total) -> int:
 def split_double_digits_into_singles(list_to_split) -> list:
 	"""Returns a new list in which all double-digit numbers have been split
 	into single-digit numbers, and put back into the list, at the
-	appropriate positions. [1|23|7] becomes [1|2|3|7], for example"""
+	appropriate positions.
+	[1, 23, 7] becomes [1, 2, 3, 7], for example"""
 
 	single_digits = []
 	for number in list_to_split:
