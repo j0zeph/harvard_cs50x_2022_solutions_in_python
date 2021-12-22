@@ -86,4 +86,23 @@ class CreditCardChecker:
 				return issuers[key]
 
 		return "INVALID"
-		pass
+
+
+def main():
+	while True:
+		card_number = input("Enter a credit card number: ")
+		if not CreditCardChecker(card_number).has_errors():
+			break
+		else:
+			print("INVALID")
+
+	card = CreditCardChecker(card_number)
+
+	if not card.is_valid_credit_card_number():
+		print("INVALID")
+	else:
+		print(card.get_card_issuer())
+
+
+if __name__ == "__main__":
+	main()
