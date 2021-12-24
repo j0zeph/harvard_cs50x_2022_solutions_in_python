@@ -1,5 +1,6 @@
 import unittest
 from caesar_logic import Caesar
+from string import punctuation, digits, whitespace
 
 
 class CaesarTesting(unittest.TestCase):
@@ -23,3 +24,11 @@ class CaesarTesting(unittest.TestCase):
         expected = ['K', 'W', 'O', 'Z']
         for char, shifted in zip(chars_to_shift, expected):
             self.assertEqual(shifted, caesar.shift_by_key(char))
+
+    def test_that_non_alphabetic_characters_remain_unchanged(self):
+        """Checks that non-alphabetical characters remain unchanged."""
+
+        non_letters = punctuation + digits + whitespace
+        caesar = Caesar(8)
+        for char in non_letters:
+            self.assertEqual(char, caesar.shift_by_key(char))
