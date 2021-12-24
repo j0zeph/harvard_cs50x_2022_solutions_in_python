@@ -2,17 +2,11 @@
 
 def main():
     while True:
-        height = get_height_of_pyramid()
+        height = input("Height: ")
         proceed_to_print = check_height_is_valid(height)
         if proceed_to_print:
             print_pyramid(height)
             break
-
-
-def get_height_of_pyramid() -> str:
-    """"Gets the height of the pyramid to print."""
-    height = input("Height: ")
-    return height
 
 
 def check_height_is_valid(height) -> bool:
@@ -30,7 +24,7 @@ def check_height_is_valid(height) -> bool:
 def print_pyramid(height) -> None:
     """Prints a pyramid of stars, depending on the given height."""
     for row in range(1, int(height)+1):
-        print("*"*row)
+        print("*" * row)
 
 
 if __name__ == "__main__":
