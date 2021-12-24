@@ -12,9 +12,21 @@ class Caesar:
 
     def shift_by_key(self, char) -> str:
         """Returns a string that represents a character, which is a result of
-        shifting the provided char by `key` times."""
+        shifting the provided char by `key` times, using the equation:
+        Ci = (Pi + key) % 26 where;
+        Ci is the `alphabetical index` of enciphered character,
+        Pi is the `alphabetical index` of the plain-text character.
 
-        # do not shift non-letters
+        Here, the `alphabetical index` is a mapping where a=0, b=1, ..., z=25
+
+        The equation has been modified to first convert the plain-text
+        character to its ASCII value, then shift by the key provided,
+        then convert that to its `alphabetical index` then convert that back
+        to the ASCII value, and return the character that is represented by
+        this ASCII value.
+
+        Case is preserved throughout this conversion."""
+
         if not char.isalpha():
             return char
 
