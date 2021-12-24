@@ -7,7 +7,7 @@ def argv_is_valid(argv):
     """Returns whether or not the commandline arguments provided are valid."""
     try:
         correct_length = len(argv) == 2
-        second_arg_is_numeric = argv[1].isalpha()
+        second_arg_is_numeric = argv[1].isnumeric()
         return correct_length and second_arg_is_numeric
     except IndexError:
         return False
