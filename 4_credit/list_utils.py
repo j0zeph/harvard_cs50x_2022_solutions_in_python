@@ -28,7 +28,7 @@ def split_double_digits_into_singles(list_to_split) -> list:
 
 def double_numbers_in_list(list_to_multiply) -> list:
 	"""Returns a new list that is a result of multiplying every element
-	in the provided list."""
+	in the provided list by 2."""
 	doubled_list = []
 	for number in range(0, len(list_to_multiply)):
 		doubled_list.append(list_to_multiply[number] * 2)
