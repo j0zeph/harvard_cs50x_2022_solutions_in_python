@@ -7,7 +7,8 @@ class Caesar:
 
     def __init__(self, key_to_shift_by):
         self.key = key_to_shift_by
-
+        self.ascii_of_a = 97
+        self.ascii_of_A = 65
 
     def shift_by_key(self, char) -> str:
         """Returns a string that represents a character, which is a result of
@@ -17,9 +18,10 @@ class Caesar:
         if not char.isalpha():
             return char
 
-        ASCII_value = ord(char)
+        key = self.key
+        ascii_of_char = ord(char)
+        value_of_a = self.ascii_of_A if char.isupper() else self.ascii_of_a
 
-        shifted_char = (((ASCII_value + self.key) - 97) % 26) + 97
-        if char.isupper():
-            return chr(shifted_char.upper())
+        shifted_char = (((ascii_of_char + key) - value_of_a) % 26) + value_of_a
+
         return chr(shifted_char)
