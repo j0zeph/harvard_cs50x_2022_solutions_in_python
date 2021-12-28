@@ -14,7 +14,7 @@ def main():
 
     for char in plain_text:
         print(caesar.shift_by_key(char), end="")
-
+    print()
 
 def check_argv() -> None:
     if not cu.argv_is_valid(argv):
