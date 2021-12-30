@@ -32,3 +32,12 @@ class CaesarTesting(unittest.TestCase):
         caesar = Caesar(8)
         for char in non_letters:
             self.assertEqual(char, caesar.shift_by_key(char))
+
+    def test_that_large_key_shifts_correctly(self):
+        """Checks that a large key will wrap around correctly"""
+
+        caesar = Caesar(28)
+        chars_to_shift = ['h', 'E', 'L', 'l', 'O']
+        expected = ['j', 'G', 'N', 'n', 'Q']
+        for char, shifted in zip(chars_to_shift, expected):
+            self.assertEqual(shifted, caesar.shift_by_key(char))
