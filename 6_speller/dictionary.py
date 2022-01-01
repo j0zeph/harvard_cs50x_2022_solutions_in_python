@@ -5,7 +5,10 @@ loaded_words = set()
 
 def load(dictionary) -> None:
     """Loads all the words from a dictionary file into word_dictionary"""
-    pass
+
+    with open(dictionary) as word_dict:
+        for word in word_dict:
+            loaded_words.add(word)
 
 
 def hash_function():
