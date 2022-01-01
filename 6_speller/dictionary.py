@@ -33,7 +33,7 @@ def size() -> int:
 def check(word):
     """Checks if a word is in the dictionary."""
 
-    return word in loaded_words
+    return word.lower() in loaded_words
 
 
 def unload():
