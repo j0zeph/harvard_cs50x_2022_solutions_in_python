@@ -1,28 +1,34 @@
 #!/usr/bin/env python3
 
-loaded_words = ()
-SMALL_DICTIONARY_FILE = "dictionaries/small.txt"
-LARGE_DICTIONARY_FILE = "dictionaries/large.txt"
+loaded_words = set()
 
 
-def load() -> None:
+def load(dictionary) -> None:
     """Loads all the words from a dictionary file into word_dictionary"""
     pass
 
 
 def hash_function():
+    """Was supposed to be `hash()`, but that method name shadowed an in-built
+    Python name.
+
+    Function unimplemented because Python's set provides hashing under the
+    hood."""
     pass
 
 
 def size() -> int:
     """Returns how many words are in the dictionary."""
-    pass
+    
+    return len(loaded_words)
 
 
-def check():
+def check(word):
     """Checks if a word is in the dictionary."""
-    pass
+
+    return word in loaded_words
 
 
 def unload():
+    """Method unimplemented because python unloads automatically"""
     pass
