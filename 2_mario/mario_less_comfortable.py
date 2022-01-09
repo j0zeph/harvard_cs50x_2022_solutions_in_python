@@ -24,7 +24,7 @@ def check_height_is_valid(height) -> bool:
 def print_pyramid(height) -> None:
     """Prints a pyramid of stars, depending on the given height."""
     for row in range(1, int(height)+1):
-        print("#" * row)
+        print("{}{}".format(" " * (int(height) - row), "#" * row))
 
 
 if __name__ == "__main__":
