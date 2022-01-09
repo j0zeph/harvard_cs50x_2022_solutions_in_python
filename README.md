@@ -1,4 +1,4 @@
-# HarvardCS50_Problem Sets_2019
+# Harvard_CS50_Problem Sets_2019
 Solutions to Harvard's CS50 Problem Sets for 2019,<br>
 implemented in Python, and based on walkthroughs.<br>
 
