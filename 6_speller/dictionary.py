@@ -9,7 +9,7 @@ def load(dictionary) -> bool:
     try:
         with open(dictionary, encoding="utf-8") as word_dict:
             for word in word_dict:
-                loaded_words.add(word)
+                loaded_words.add(word.strip())
         return True
     except FileNotFoundError:
         return False
