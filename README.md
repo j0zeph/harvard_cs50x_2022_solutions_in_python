@@ -10,66 +10,62 @@ These Problem Sets, and their descriptions can be found<br>
 ###<u>**Problem Set 0:**</u><br>
 * ####<u>Hello</u><br>
     * <https://cs50.harvard.edu/x/2022/psets/1/hello/> 
-    <br>
-<br>
+      <br>
 ---
 <br>
 
 ###<u>**Problem Set 1:**</u><br>
 * ####<u>Mario</u> (less comfortable)<br>
     * <https://cs50.harvard.edu/x/2022/psets/1/mario/less/>
-    <br>
+      <br>
 * ####<u>Mario</u> (more comfortable)<br>
     * <https://cs50.harvard.edu/x/2022/psets/1/mario/more/> 
-    <br>
+      <br>
 * ####<u>Cash</u><br>
     * <https://cs50.harvard.edu/x/2022/psets/1/cash/> 
-    <br>
+      <br>
 * ####<u>Credit</u><br>
     * <https://cs50.harvard.edu/x/2022/psets/1/credit/> 
-    <br>
-<br>
+      <br>
 ---
 <br>
 
 ###<u>**Problem Set 2:**</u><br>
 * ####<u>Readability</u><br>
   * <https://cs50.harvard.edu/x/2022/psets/2/readability/> 
-  <br>
+    <br>
 * ####<u>Caesar</u><br>
   * <https://cs50.harvard.edu/x/2022/psets/2/caesar/> 
-  <br>
+    <br>
 * ####<u>Substitution</u><br>
   * <https://cs50.harvard.edu/x/2022/psets/2/substitution/> 
-  <br>
-<br>
+    <br>
 ---
 <br>
 
 ###<u>**Problem Set 3:**</u><br>
 * ####<u>Plurality</u><br>
   * <https://cs50.harvard.edu/x/2022/psets/3/plurality/> 
-  <br>
+    <br>
 * ####<u>Runoff</u><br>
   * <https://cs50.harvard.edu/x/2022/psets/3/runoff/> 
-  <br>
+    <br>
 * ####<u>Tideman</u><br>
   * <https://cs50.harvard.edu/x/2022/psets/3/tideman/> 
-  <br>
-<br>
+    <br>
 ---
 <br>
 
 ###<u>**Problem Set 4:**</u><br>
 * ####<u>Filter</u> (less comfortable)<br>
   * <https://cs50.harvard.edu/x/2022/psets/4/filter/less/> 
-  <br>
+    <br>
 * ####<u>Filter</u> (more comfortable)<br>
   * <https://cs50.harvard.edu/x/2022/psets/4/filter/more/> 
-  <br>
+    <br>
 * ####<u>Recover<br>
   * <https://cs50.harvard.edu/x/2022/psets/4/recover/>
-  <br>
+    <br>
 ---
 <br>
 
