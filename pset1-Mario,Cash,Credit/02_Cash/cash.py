@@ -2,19 +2,13 @@
 
 def main():
 	while True:
-		change_asked = get_change_owed()
+		change_asked = input("Change owed: ")
 		proceed = check_valid_change(change_asked)
 		if proceed:
 			change_in_cents = get_cents(change_asked)
 			minimum_coins_used = get_min_coins_to_make_change(change_in_cents)
 			break
 	print(minimum_coins_used)
-
-
-def get_change_owed() -> str:
-	"""Asks the user how much change(in dollars) is owed to them"""
-	change = input("Change owed: ")
-	return change
 
 
 def check_valid_change(change_to_check) -> bool:
