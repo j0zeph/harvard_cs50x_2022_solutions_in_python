@@ -10,7 +10,7 @@ def get_name() -> str:
     return name
 
 
-def greet(name) -> None:
+def greet(name: str) -> None:
     """"Says hello to user, using their name in the greeting"""
     print("\nHello {}\n".format(name))
 

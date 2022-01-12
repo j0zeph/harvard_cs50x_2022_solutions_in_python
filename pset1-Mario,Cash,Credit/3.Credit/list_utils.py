@@ -6,7 +6,7 @@ def add_numbers_in_list(list_to_total) -> int:
 	return total
 
 
-def split_double_digits_into_singles(list_to_split) -> list:
+def split_double_digits_into_singles(list_to_split) -> list[int]:
 	"""Returns a new list in which all double-digit numbers in the provided list
 	have been split into single-digit numbers.
 	The new list maintains the order of digits in the provided list.
@@ -64,7 +64,7 @@ def get_every_other_from_end(list_to_split, starting_index) -> list:
 	return every_other_from_end
 
 
-def remove_spaces(string_to_compact):
+def remove_spaces(string_to_compact: str) -> str:
 	"""Takes a string with whitespaces, and returns the same string without
 	whitespaces."""
 

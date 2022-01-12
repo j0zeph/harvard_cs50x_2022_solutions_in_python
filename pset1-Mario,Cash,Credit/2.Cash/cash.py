@@ -5,7 +5,7 @@ def main():
 		change_asked = input("Change owed: ")
 		proceed = check_valid_change(change_asked)
 		if proceed:
-			change_in_cents = get_cents(change_asked)
+			change_in_cents = get_cents(float(change_asked))
 			minimum_coins_used = get_min_coins_to_make_change(change_in_cents)
 			break
 	print(minimum_coins_used)
@@ -15,20 +15,17 @@ def check_valid_change(change_to_check) -> bool:
 	"""Checks that the change provided is a positive number"""
 	try:
 		change = float(change_to_check)
-		if not(change >= 0):
-			return False
-		else:
-			return True
+		return change >= 0
 	except ValueError:
 		return False
 
 
-def get_cents(dollar_value) -> int:
+def get_cents(dollar_value: float) -> int:
 	"""Returns the rounded equivalent amount of change, in cents"""
-	return round(float(dollar_value) * 100)
+	return round(dollar_value * 100)
 
 
-def get_min_coins_to_make_change(total_cents) -> int:
+def get_min_coins_to_make_change(total_cents: int) -> int:
 	"""Returns the minimum number of coins (quarters, dimes, nickels, cents),
 	that it would take to make the total number of cents provided"""
 

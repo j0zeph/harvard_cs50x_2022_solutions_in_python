@@ -5,31 +5,30 @@ def main():
 		height = input("Height: ")
 		proceed_to_print = check_height_is_valid(height)
 		if proceed_to_print:
-			print_pyramid(height)
+			print_pyramid(int(height))
 			break
 
 
 def check_height_is_valid(height) -> bool:
 	"""Checks if the height entered is between 1 and 8 inclusive."""
+
 	try:
-		to_check = int(height)
-		if (not (to_check > 0)) or (not (to_check <= 8)):
-			return False
-		else:
-			return True
+		h = int(height)
+		return h >= 1 and h <= 8
 	except ValueError:
 		return False
 
 
-def print_pyramid(height) -> None:
+def print_pyramid(height: int) -> None:
 	"""Prints a pyramid of stars, depending on the given height."""
+
 	middle_spaces = 2
-	h = int(height)
-	for row in range(1, int(h)+1):
-		left_spaces = " "*(h-row)
+
+	for row in range(1, height + 1):
+		left_spaces = " " * (height - row)
 		
 		# hashes are mirrored on both sides
-		left_hashes = right_hashes = "#" * (h-(h-row))  
+		left_hashes = right_hashes = "#" * (height - (height - row))
 		middle = " " * middle_spaces
 		print("{}{}{}{}".format(left_spaces, left_hashes, middle, right_hashes))
 
