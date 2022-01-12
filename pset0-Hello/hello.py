@@ -1,17 +1,12 @@
 #!/usr/bin/env python3
 
 def main():
-    greet(get_name())
-
-
-def get_name() -> str:
-    """"Returns the name that the user entered"""
-    name = input("What is your name? ")
-    return name
+    greet(input("What is your name? "))
 
 
 def greet(name: str) -> None:
     """"Says hello to user, using their name in the greeting"""
+
     print("\nHello {}\n".format(name))
 
 
