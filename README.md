@@ -76,7 +76,7 @@ These Problem Sets, and their descriptions can be found<br>
 ---
 <br>
 
-### 0<u>**Problem Set 6:**</u><br>
+### <u>**Problem Set 6:**</u><br>
 * #### <u>Readability<br>
   * <https://cs50.harvard.edu/x/2022/psets/6/readability/>
     <br>
