@@ -54,3 +54,24 @@ class ReadabilityTest(unittest.TestCase):
         for text, word_count in texts_and_word_counts.items():
             words_in_text = readability.count_words(text)
             self.assertEqual(words_in_text, word_count)
+
+    def test_correct_sentence_count(self):
+        """Checks that when given a text, the correct number of sentences are
+        counted."""
+
+        texts_and_sentence_counts = {
+            "Here, there, everywhere... But nowhere at all!!!": 2,
+
+            "A large class of computational problems involve the determination "
+            "of properties of graphs, digraphs, integers, arrays of integers, "
+            "finite families of finite sets, boolean formulas and elements of "
+            "other countable domains.": 1,
+
+            "There is no sentence here": 0,
+
+
+        }
+
+        for text, sentence_count in texts_and_sentence_counts.items():
+            sentences_in_text = readability.count_sentences(text)
+            self.assertEqual(sentences_in_text, sentence_count)
