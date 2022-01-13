@@ -39,7 +39,7 @@ class ReadabilityTest(unittest.TestCase):
         texts_and_word_counts = {
             "": 0,
             "    ": 0,
-            "Here,there,everywhere,and,nowhere": 0,
+            "Here,there,everywhere,and,nowhere": 1,
             "Here, there, everywhere. But nowhere at all!!": 7,
 
             "A large class of computational problems involve the determination "
