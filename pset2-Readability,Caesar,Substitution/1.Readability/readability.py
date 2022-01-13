@@ -31,8 +31,15 @@ def count_words(text: str) -> int:
     one or more spaces.` 
     Non-word characters are those not in the range [A-Za-z0-9_]"""
 
-    list_of_words_in_text = re.split(r"\W? +", text)
-    return len(list_of_words_in_text)
+    word_list = re.split(r"\W? +", text.strip())
+
+    empty_string = ("",)
+
+    # Make sure that after stripping a string of only spaces, the empty string
+    # left (if any) counts as zero words, and not 1 word.
+    if (len(word_list) == 1) and (word_list[0] in empty_string):
+        return 0
+    return len(word_list)
 
 
 if __name__ == '__main__':
