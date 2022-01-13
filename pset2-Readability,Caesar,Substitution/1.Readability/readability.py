@@ -37,7 +37,19 @@ def count_words(text: str) -> int:
     # left (if any) counts as zero words, and not 1 word.
     if (len(word_list) == 1) and (word_list[0] in ""):
         return 0
+
     return len(word_list)
+
+
+def count_sentences(text: str) -> int:
+    """Counts the number of sentences in the provided text.\n
+    Assumptions:
+    1.Any period, exclamation point, or question mark denotes then end
+    of a sentence\n
+    """
+
+    sentence_list = re.split(r"[.!?]+", text)
+    return len(sentence_list)
 
 
 if __name__ == '__main__':
