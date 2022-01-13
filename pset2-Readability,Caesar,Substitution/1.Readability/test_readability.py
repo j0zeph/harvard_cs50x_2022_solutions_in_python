@@ -28,3 +28,28 @@ class ReadabilityTest(unittest.TestCase):
         for text, count in texts_and_counts.items():
             letter_count = readability.count_letters(text)
             self.assertEqual(letter_count, count)
+
+    def test_correct_word_count(self):
+        """Checks that when given a text, the correct number of words are
+        counted.
+
+        Assumption: A word is any sequence of characters that is separated by
+        a space."""
+
+        texts_and_word_counts = {
+            "": 0,
+            "    ": 0,
+            "Here,there,everywhere,and,nowhere": 0,
+            "Here, there, everywhere. But nowhere at all!!": 7,
+
+            "A large class of computational problems involve the determination "
+            "of properties of graphs, digraphs, integers, arrays of integers, "
+            "finite families of finite sets, boolean formulas and elements of "
+            "other countable domains.": 31,
+
+            "!!! ### &&&": 3
+        }
+
+        for text, word_count in texts_and_word_counts.items():
+            words_in_text = readability.count_words(text)
+            self.assertEqual(words_in_text, word_count)
