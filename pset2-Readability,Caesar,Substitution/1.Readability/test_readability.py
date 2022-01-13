@@ -40,6 +40,7 @@ class ReadabilityTest(unittest.TestCase):
             "": 0,
             "    ": 0,
             "Here,there,everywhere,and,nowhere": 1,
+            "       Still                ": 1,
             "Here, there, everywhere. But nowhere at all!!": 7,
 
             "A large class of computational problems involve the determination "
