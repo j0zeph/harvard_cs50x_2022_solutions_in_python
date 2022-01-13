@@ -3,11 +3,8 @@
 import re
 
 
-def get_text() -> str:
-    """Gets (as user input), the text whose reading level is to be determined"""
-
+def main():
     text = input("Text: ")
-    return text
 
 
 def count_letters(text: str) -> int:
@@ -20,3 +17,7 @@ def count_letters(text: str) -> int:
             letter_count += 1
 
     return letter_count
+
+
+if __name__ == '__main__':
+    main()
