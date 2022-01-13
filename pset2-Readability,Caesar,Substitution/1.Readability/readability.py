@@ -49,7 +49,12 @@ def count_sentences(text: str) -> int:
     """
 
     sentence_list = re.split(r"[.!?]+", text)
-    return len(sentence_list)
+
+    # Make sure that there are no empty strings left over in the sentence list.
+    filtered_list = list(filter(lambda x: len(str(x)) > 0, sentence_list))
+    
+
+    return len(filtered_list)
 
 
 if __name__ == '__main__':
