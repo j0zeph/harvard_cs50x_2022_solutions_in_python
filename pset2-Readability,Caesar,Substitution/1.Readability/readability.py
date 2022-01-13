@@ -33,11 +33,9 @@ def count_words(text: str) -> int:
 
     word_list = re.split(r"\W? +", text.strip())
 
-    empty_string = ("",)
-
     # Make sure that after stripping a string of only spaces, the empty string
     # left (if any) counts as zero words, and not 1 word.
-    if (len(word_list) == 1) and (word_list[0] in empty_string):
+    if (len(word_list) == 1) and (word_list[0] in ""):
         return 0
     return len(word_list)
 
