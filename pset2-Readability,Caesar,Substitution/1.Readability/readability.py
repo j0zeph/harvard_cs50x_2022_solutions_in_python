@@ -19,5 +19,21 @@ def count_letters(text: str) -> int:
     return letter_count
 
 
+def count_words(text: str) -> int:
+    """Counts the number of words in the provided text.\n
+    Assumptions:
+        1.The text will not start or end with a space.\n
+        2.Words will be separated by a single space.\n
+        3.The sentence will not have multiple consecutive spaces in row.\n
+    """
+
+    """Splitting the text by `Zero or more non-word characters, that are followed by 
+    one or more spaces.` 
+    Non-word characters are those not in the range [A-Za-z0-9_]"""
+
+    list_of_words_in_text = re.split(r"\W? +", text)
+    return len(list_of_words_in_text)
+
+
 if __name__ == '__main__':
     main()
