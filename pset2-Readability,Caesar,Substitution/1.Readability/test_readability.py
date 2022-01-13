@@ -67,7 +67,7 @@ class ReadabilityTest(unittest.TestCase):
             "finite families of finite sets, boolean formulas and elements of "
             "other countable domains.": 1,
 
-            "There is no sentence here": 0,
+            "We will count this as a sentence": 1,
 
 
         }
