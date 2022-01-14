@@ -16,6 +16,7 @@ def main():
         print(caesar.shift_by_key(char), end="")
     print()
 
+
 def check_argv() -> None:
     if not cu.argv_is_valid(argv):
         cu.remind_user_of_usage()
