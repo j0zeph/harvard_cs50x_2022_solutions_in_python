@@ -52,9 +52,22 @@ def count_sentences(text: str) -> int:
 
     # Make sure that there are no empty strings left over in the sentence list.
     filtered_list = list(filter(lambda x: len(str(x)) > 0, sentence_list))
-    
 
     return len(filtered_list)
+
+
+def get_index(chars: int, words: int, sentences: int) -> int:
+    """Returns the reading grade(using the Coleman-Liau index), given the\n
+    number of characters, words, and sentences in a text.\n\n
+
+    index = 0.0588 * L - 0.296 * S - 15.8 where:
+        L - average number of letters per 100 words.
+        S - average number of sentences per 100 words."""
+
+    L = chars / (words / 100)
+    S = sentences / (words / 100)
+
+    return round((0.0588 * L) - (0.296 * S) - 15.8)
 
 
 if __name__ == '__main__':
