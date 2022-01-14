@@ -4,7 +4,17 @@ import re
 
 
 def main():
-    text = input("Text: ")
+    # Keep prompting if an empty string was provided.
+    while True:
+        text = input("Text: ")
+
+        if len(text) > 0:
+            break
+    letter_count = count_letters(text)
+    word_count = count_words(text)
+    sentence_count = count_sentences(text)
+
+    print(get_grade(get_index(letter_count, word_count, sentence_count)))
 
 
 def count_letters(text: str) -> int:
@@ -27,8 +37,8 @@ def count_words(text: str) -> int:
         3.The sentence will not have multiple consecutive spaces in row.\n
     """
 
-    """Splitting the text by `Zero or more non-word characters, that are followed by 
-    one or more spaces.` 
+    """Splitting the text by `Zero or more non-word characters, that are 
+    followed by one or more spaces.` 
     Non-word characters are those not in the range [A-Za-z0-9_]"""
 
     word_list = re.split(r"\W? +", text.strip())
