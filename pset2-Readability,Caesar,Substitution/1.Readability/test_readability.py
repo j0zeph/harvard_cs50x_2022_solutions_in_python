@@ -75,3 +75,59 @@ class ReadabilityTest(unittest.TestCase):
         for text, sentence_count in texts_and_sentence_counts.items():
             sentences_in_text = readability.count_sentences(text)
             self.assertEqual(sentences_in_text, sentence_count)
+
+    def test_correct_reading_grade_is_returned(self):
+        """Checks that when given a text, the correct reading grade is
+        returned, as per the Coleman-Liau index"""
+
+        texts_and_grades = {
+            "One fish. Two fish. Red fish. Blue fish.": "Before Grade 1",
+
+            "Would you like them here or there? I would not like them here or "
+            "there. I would not like them anywhere.": "Grade 2",
+            
+            "Congratulations! Today is your day. You're off to Great Places! "
+            "You're off and away!": "Grade 3",
+
+            "Harry Potter was a highly unusual boy in many ways. For one "
+            "thing, he hated the summer holidays more than any other time of "
+            "year. For another, he really wanted to do his homework, but was "
+            "forced to do it in secret, in the dead of the night. And he also "
+            "happened to be a wizard.": "Grade 5",
+
+            "In my younger and more vulnerable years my father gave me some "
+            "advice that I've been turning "
+            "over in my mind ever since.": "Grade 7",
+
+            "When he was nearly thirteen, my brother Jem got his arm badly "
+            "broken at the elbow. When it healed, and Jem's fears of never "
+            "being able to play football were assuaged, he was seldom "
+            "self-conscious about his injury. His left arm was somewhat "
+            "shorter than his right; when he stood or walked, the back of his "
+            "hand was at right angles to his body, his thumb parallel to his "
+            "thigh.": "Grade 8",
+
+            "There are more things in Heaven and Earth, Horatio, than are "
+            "dreamt of in your philosophy.": "Grade 9",
+
+            "It was a bright cold day in April, and the clocks were striking "
+            "thirteen. Winston Smith, his chin nuzzled into his breast in an "
+            "effort to escape the vile wind, slipped quickly through the glass "
+            "doors of Victory Mansions, though not quickly enough to prevent a "
+            "swirl of gritty dust from entering along with him.": "Grade 10",
+
+            "A large class of computational problems involve the determination "
+            "of properties of graphs, digraphs, integers, arrays of integers, "
+            "finite families of finite sets, boolean formulas and elements of "
+            "other countable domains.": "Grade 16+",
+        }
+
+        for text, reading_grade in texts_and_grades.items():
+
+            chars = readability.count_letters(text)
+            words = readability.count_words(text)
+            sentences = readability.count_sentences(text)
+
+            index = readability.get_index(chars, words, sentences)
+            grade = readability.get_grade(index)
+            self.assertEqual(grade, reading_grade)
