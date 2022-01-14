@@ -68,8 +68,6 @@ class ReadabilityTest(unittest.TestCase):
             "other countable domains.": 1,
 
             "We will count this as a sentence": 1,
-
-
         }
 
         for text, sentence_count in texts_and_sentence_counts.items():
@@ -99,6 +97,13 @@ class ReadabilityTest(unittest.TestCase):
             "advice that I've been turning "
             "over in my mind ever since.": "Grade 7",
 
+            "Alice was beginning to get very tired of sitting by her sister "
+            "on the bank, and of having nothing to do: once or twice she had "
+            "peeped into the book her sister was reading, but it had no "
+            "pictures or conversations in it, \"and what is the use of a "
+            "book,\" thought Alice \"without "
+            "pictures or conversation?\"": "Grade 8",
+            
             "When he was nearly thirteen, my brother Jem got his arm badly "
             "broken at the elbow. When it healed, and Jem's fears of never "
             "being able to play football were assuaged, he was seldom "
