@@ -25,7 +25,6 @@ def count_letters(text: str) -> int:
     for char in text:
         if re.match(r"[A-Za-z]", char):
             letter_count += 1
-
     return letter_count
 
 
@@ -47,7 +46,6 @@ def count_words(text: str) -> int:
     # left (if any) counts as zero words, and not 1 word.
     if (len(word_list) == 1) and (word_list[0] in ""):
         return 0
-
     return len(word_list)
 
 
@@ -58,11 +56,13 @@ def count_sentences(text: str) -> int:
     of a sentence\n
     """
 
-    sentence_list = re.split(r"[.!?]+", text)
+    """Split sentences by: an exclamation mark, a question mark, or a period,
+    optionally followed by a non-alphabetical character that might repeat
+    itself consecutively."""
+    sentence_list = re.split(r"[!?.][\W?]*", text)
 
     # Make sure that there are no empty strings left over in the sentence list.
     filtered_list = list(filter(lambda x: len(str(x)) > 0, sentence_list))
-
     return len(filtered_list)
 
 
