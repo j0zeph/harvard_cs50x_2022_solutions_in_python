@@ -74,8 +74,9 @@ def get_index(chars: int, words: int, sentences: int) -> int:
         L - average number of letters per 100 words.
         S - average number of sentences per 100 words."""
 
-    L = chars / (words / 100)
-    S = sentences / (words / 100)
+    # Round to 3 decimal places.
+    L = round((chars / (words / 100)), 3)
+    S = round((sentences / (words / 100)), 3)
 
     return round((0.0588 * L) - (0.296 * S) - 15.8)
 
