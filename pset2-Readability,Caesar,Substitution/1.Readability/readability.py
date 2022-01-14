@@ -70,5 +70,19 @@ def get_index(chars: int, words: int, sentences: int) -> int:
     return round((0.0588 * L) - (0.296 * S) - 15.8)
 
 
+def get_grade(index: int) -> str:
+    """Returns a reading grade, depending on the provided Coleman-Liau index"""
+
+    # Set of grades from 1 to 15.
+    one_to_fifteen = set(grade for grade in range(1, 16))
+
+    if index < 1:
+        return "Before Grade 1"
+    elif index in one_to_fifteen:
+        return "Grade " + str(index)
+    else:
+        return "Grade 16+"
+
+
 if __name__ == '__main__':
     main()
