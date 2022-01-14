@@ -1,12 +1,3 @@
-"""
-Coleman-Liau index
-
-index = 0.0588 * L - 0.296 * S - 15.8
-where:
-L - average number of letters per 100 words.
-S - average number of sentences per 100 words.
-"""
-
 import readability
 import unittest
 
@@ -75,8 +66,14 @@ class ReadabilityTest(unittest.TestCase):
             self.assertEqual(sentences_in_text, sentence_count)
 
     def test_correct_reading_grade_is_returned(self):
-        """Checks that when given a text, the correct reading grade is
-        returned, as per the Coleman-Liau index"""
+        """Checks that when given a text, the correct reading grade is\n
+        returned, as per the Coleman-Liau index\n
+
+        index = 0.0588 * L - 0.296 * S - 15.8
+        where:
+            L - average number of letters per 100 words.
+            S - average number of sentences per 100 words.
+        """
 
         texts_and_grades = {
             "One fish. Two fish. Red fish. Blue fish.": "Before Grade 1",
