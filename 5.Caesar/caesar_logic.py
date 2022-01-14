@@ -1,8 +1,3 @@
-from sys import argv
-import caesar_utils as cutils
-from string import ascii_lowercase, ascii_uppercase
-
-
 class Caesar:
 
     def __init__(self, key_to_shift_by):
