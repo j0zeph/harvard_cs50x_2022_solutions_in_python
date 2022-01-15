@@ -1,7 +1,9 @@
+import string
 import sys
 
 CORRECT_ARGV_LENGTH = 2
 CORRECT_KEY_LENGTH = 26
+ALPHABET = string.ascii_lowercase
 
 
 def main():
@@ -14,6 +16,7 @@ def print_argv_warnings() -> None:
         -- Has a key whose length is not correct
         -- Has a key containing non_alphabetic characters
     """
+
     if not(len(sys.argv) == CORRECT_ARGV_LENGTH):
         exit(show_error("usage"))
     if not(len(sys.argv[1]) == CORRECT_KEY_LENGTH):
@@ -32,7 +35,8 @@ def show_error(message_type: str) -> str:
 
     messages = {
         "usage": "Usage: python substitution.py key",
-        "key length": f"Key must contain {CORRECT_KEY_LENGTH} characters.",
+        "key": f"Key must contain {CORRECT_KEY_LENGTH} characters.",
+        "alphabet": "Key must only contain alphabetic characters."
     }
 
     return messages[message_type]
