@@ -2,7 +2,7 @@
 
 import caesar_utils as cu
 from sys import argv
-from caesar_logic import Caesar
+from caesar_class import Caesar
 
 
 def main():

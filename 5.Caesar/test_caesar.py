@@ -1,5 +1,5 @@
 import unittest
-from caesar_logic import Caesar
+from caesar_class import Caesar
 from string import punctuation, digits, whitespace
 
 
