@@ -37,3 +37,7 @@ class Substitution:
 
     def set_key(self, key: str) -> None:
         self.key = key
+
+    def clear_ciphertext(self) -> None:
+        """Empties stored ciphertext"""
+        self.ciphertext = ""
