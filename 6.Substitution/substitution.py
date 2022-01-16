@@ -8,6 +8,7 @@ def main():
     sub = substitution.Substitution()
     sub.set_plaintext(plaintext)
     sub.set_key(sub_utils.get_key())
+    sub.encipher()
     print("Ciphertext: {}".format(sub.get_ciphertext()))
 
 
