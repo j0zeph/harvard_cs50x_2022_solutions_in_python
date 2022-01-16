@@ -6,7 +6,7 @@ CORRECT_KEY_LENGTH = 26
 ALPHABET = string.ascii_lowercase
 
 
-def print_argv_warnings() -> None:
+def print_any_argv_warnings() -> None:
     """Prints an error message if the commandline argument(s):
         -- Is not the correct length
         -- Has a key whose length is not correct
@@ -36,3 +36,7 @@ def show_error(message_type: str) -> str:
     }
 
     return messages[message_type]
+
+
+def get_key() -> str:
+    return sys.argv[1]
