@@ -21,7 +21,7 @@ def print_any_argv_warnings() -> None:
     key_provided = sys.argv[1]
 
     for char in key_provided:
-        if char not in ALPHABET:
+        if char.lower() not in ALPHABET:
             exit(show_error("alphabet"))
 
 
