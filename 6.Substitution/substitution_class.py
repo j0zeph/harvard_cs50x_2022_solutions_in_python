@@ -4,19 +4,19 @@ import substitution_utils
 class Substitution:
 
     def __init__(self):
-        self.key: str = ""
-        self.plaintext: str = ""
-        self.ciphertext: str = ""
+        self.key = ""
+        self.plaintext = ""
+        self.ciphertext = ""
         self.alphabet = substitution_utils.ALPHABET
 
-    def get_substitution(self, key: str, plaintext: str) -> None:
+    def encipher(self) -> None:
         """Enciphers the given plaintext using the given key, by way of
         substitution, and returns the ciphertext"""
 
-        for char in plaintext:
+        for char in self.plaintext:
 
             # Do not encipher a non-alphabetic character.
-            if char not in self.alphabet:
+            if char.lower() not in self.alphabet:
                 self.ciphertext += char
             else:
                 # Find the char's location in the alphabet
@@ -30,8 +30,10 @@ class Substitution:
                     self.ciphertext += self.key[index].lower()
 
     def get_ciphertext(self) -> str:
-        """Returns the ciphertext."""
         return self.ciphertext
 
     def set_plaintext(self, plaintext: str) -> None:
         self.plaintext = plaintext
+
+    def set_key(self, key: str) -> None:
+        self.key = key
