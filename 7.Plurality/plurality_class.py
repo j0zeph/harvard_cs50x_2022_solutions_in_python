@@ -23,14 +23,11 @@ class Plurality:
         to vote for."""
 
         for voter in range(0, self.voter_number):
-            while True:
-                candidate_to_vote = input("Vote: ")
-                if candidate_to_vote not in self.candidates_list.keys():
-                    print("Invalid vote.")
-                else:
-                    break
-
-            self.vote(candidate_to_vote)
+            candidate_to_vote = input("Vote: ")
+            if candidate_to_vote not in self.candidates_list.keys():
+                print("Invalid vote.")
+            else:
+                self.vote(candidate_to_vote)
 
     def print_winner(self) -> None:
         """Prints the winner of the plurality voting process.
@@ -48,5 +45,5 @@ class Plurality:
             if person[1] == highest_vote:
                 winners.add(person[0])
 
-        for winner in winners:
+        for winner in sorted(winners):
             print(winner)
