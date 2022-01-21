@@ -30,8 +30,14 @@ class Plurality:
                 self.vote(candidate_to_vote)
 
     def print_winner(self) -> None:
-        """Prints the winner of the plurality voting process.
-        Should multiple winners exist, they are all printed."""
+        """Print winners"""
+
+        for winner in self.get_winner():
+            print(winner)
+
+    def get_winner(self) -> list:
+        """Gets the winner/winners of the plurality voting process.
+        Should multiple winners exist, they are all returned."""
 
         winners = set()
 
@@ -45,5 +51,5 @@ class Plurality:
             if person[1] == highest_vote:
                 winners.add(person[0])
 
-        for winner in sorted(winners):
-            print(winner)
+        return sorted(winners)
+
