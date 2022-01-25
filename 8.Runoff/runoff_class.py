@@ -5,9 +5,8 @@ class Runoff:
     """Represents a runoff voting scenario."""
 
     def __init__(self, candidates_names: list[str], voter_number: int) -> None:
-        self.candidates: dict[str] = {}
+        self.candidates: dict[str, candidate.Candidate] = {}
         self.populate_candidates(candidates_names)
-        self.candidate_count = len(self.candidates)
         self.voter_count = voter_number
         self.voter_prefs = [[] for x in range(0, voter_number)]
 
@@ -23,7 +22,7 @@ class Runoff:
         """Stores each voter's preferences for all candidates."""
 
         voters = list(range(0, self.voter_count))
-        rank_numbers = list(range(0, self.candidate_count))
+        rank_numbers = list(range(0, len(self.candidates)))
 
         for voter in voters:
             for rank in rank_numbers:
@@ -39,7 +38,18 @@ class Runoff:
     def tabulate(self):
         """Tabulate votes for non-eliminated candidates."""
 
-        pass
+        # Update the vote count of candidates, based on voter preferences.
+        for preference in self.voter_prefs:
+            for name in preference:
+
+                # update candidate's vote count, if they have not been
+                # eliminated.
+                # Move to the next preferred candidate otherwise.
+                if not self.candidates[name].eliminated:
+                    self.candidates[name].votes += 1
+                    break
+                else:
+                    continue
 
     def candidate_is_valid(self, candidate_name: str) -> bool:
         """Returns whether this candidate is valid."""
