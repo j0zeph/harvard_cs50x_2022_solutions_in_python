@@ -5,7 +5,7 @@ class Runoff:
     """Represents a runoff voting scenario."""
 
     def __init__(self, candidates_names: list[str], voter_number: int) -> None:
-        self.candidates: list[candidate.Candidate] = []
+        self.candidates: dict[str] = {}
         self.populate_candidates(candidates_names)
         self.candidate_count = len(self.candidates)
         self.voter_count = voter_number
@@ -17,7 +17,7 @@ class Runoff:
 
         for name in list_of_names:
             this_candidate = candidate.Candidate(name)
-            self.candidates.append(this_candidate)
+            self.candidates[name] = this_candidate
 
     def get_preferences_and_cast_votes(self) -> None:
         """Stores each voter's preferences for all candidates."""
@@ -37,10 +37,7 @@ class Runoff:
     def candidate_is_valid(self, candidate_name: str) -> bool:
         """Returns whether this candidate is valid."""
 
-        for person in self.candidates:
-            if person.name == candidate_name:
-                return True
-        return False
+        return candidate_name in self.candidates.keys()
 
     def is_tie(self, minimum: int) -> bool:
         """Returns whether the election is tied between all candidates."""
