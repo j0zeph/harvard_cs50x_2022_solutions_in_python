@@ -16,3 +16,19 @@ class TestRunoff(unittest.TestCase):
             person = self.voting_model.candidates[index]
             name = self.candidates[index]
             self.assertEqual(person.name, name)
+
+    def test_that_invalid_candidates_are_caught(self):
+        """Checks that the candidate being voted for is in the list of
+        valid candidates"""
+
+        people_validity = {
+            "Marta": True,
+            "Benoit": False,
+            "Joni": True,
+            "Ransom": False,
+        }
+
+        model = self.voting_model
+
+        for person, validity in people_validity.items():
+            self.assertEqual(validity, model.candidate_is_valid(person))

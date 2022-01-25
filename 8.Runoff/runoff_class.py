@@ -37,7 +37,10 @@ class Runoff:
     def candidate_is_valid(self, candidate_name: str) -> bool:
         """Returns whether this candidate is valid."""
 
-        pass
+        for person in self.candidates:
+            if person.name == candidate_name:
+                return True
+        return False
 
     def is_tie(self, minimum: int) -> bool:
         """Returns whether the election is tied between all candidates."""
