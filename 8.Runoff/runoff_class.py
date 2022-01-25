@@ -22,12 +22,19 @@ class Runoff:
     def get_preferences_and_cast_votes(self) -> None:
         """Stores each voter's preferences for all candidates."""
 
-        pass
+        voters = list(range(0, self.voter_count))
+        rank_numbers = list(range(0, self.candidate_count))
 
-    def vote(self, voter: int, rank: int, name: str) -> None:
+        for voter in voters:
+            for rank in rank_numbers:
+                name = input(f"Rank {rank + 1}: ")
+                if self.candidate_is_valid(name):
+                    self.vote(voter, name)
+
+    def vote(self, voter: int, name: str) -> None:
         """Records preference if vote is valid."""
 
-        pass
+        self.voter_prefs[voter].append(name)
 
     def tabulate(self):
         """Tabulate votes for non-eliminated candidates."""

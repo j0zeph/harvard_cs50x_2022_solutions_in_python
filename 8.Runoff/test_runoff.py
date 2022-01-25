@@ -7,7 +7,7 @@ class TestRunoff(unittest.TestCase):
 
     def setUp(self) -> None:
         self.candidates = ["Marta", "Joni", "Fran", "Linda"]
-        self.voter_number = 5
+        self.voter_number = 3
         self.model = runoff.Runoff(self.candidates, self.voter_number)
 
     def test_that_candidates_are_populated_correctly(self):
@@ -30,3 +30,18 @@ class TestRunoff(unittest.TestCase):
 
         for person, validity in people_validity.items():
             self.assertEqual(validity, model.candidate_is_valid(person))
+
+    def test_that_voter_preferences_are_recorded_correctly(self):
+        voter_num = self.voter_number
+        votes_cast = [
+            ["Marta", "Joni", "Fran", "Linda"],
+            ["Joni", "Marta", "Fran", "Linda"],
+            ["Joni", "Marta", "Linda", "Fran"],
+        ]
+
+        for voter_index in range(0, voter_num):
+            for name in votes_cast[voter_index]:
+                self.model.vote(voter_index, name)
+
+        expected = votes_cast
+        self.assertEqual(expected, self.model.voter_prefs)
