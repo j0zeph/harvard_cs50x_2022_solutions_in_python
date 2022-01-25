@@ -9,6 +9,13 @@ class TestRunoff(unittest.TestCase):
         self.candidates = ["Marta", "Joni", "Fran", "Linda"]
         self.voter_number = 5
         self.model = runoff.Runoff(self.candidates, self.voter_number)
+        self.votes_to_cast = [
+            ["Marta", "Joni", "Fran", "Linda"],
+            ["Joni", "Marta", "Fran", "Linda"],
+            ["Linda", "Marta", "Joni", "Fran"],
+            ["Marta", "Joni", "Fran", "Linda"],
+            ["Marta", "Fran", "Linda", "Joni"],
+        ]
 
     def test_that_candidates_are_populated_correctly(self):
         candidate_names = self.model.candidates.keys()
@@ -33,33 +40,19 @@ class TestRunoff(unittest.TestCase):
 
     def test_that_voter_preferences_are_recorded_correctly(self):
         voter_num = self.voter_number
-        votes_cast = [
-            ["Marta", "Joni", "Fran", "Linda"],
-            ["Joni", "Marta", "Fran", "Linda"],
-            ["Joni", "Marta", "Linda", "Fran"],
-            ["Marta", "Joni", "Fran", "Linda"],
-            ["Marta", "Fran", "Linda", "Joni"],
-        ]
 
         for voter_index in range(0, voter_num):
-            for name in votes_cast[voter_index]:
+            for name in self.votes_to_cast[voter_index]:
                 self.model.vote(voter_index, name)
 
-        expected = votes_cast
+        expected = self.votes_to_cast
         self.assertEqual(expected, self.model.voter_prefs)
 
     def test_that_votes_are_tabulated_correctly(self):
         voter_num = self.voter_number
-        votes_cast = [
-            ["Marta", "Joni", "Fran", "Linda"],
-            ["Joni", "Marta", "Fran", "Linda"],
-            ["Linda", "Marta", "Joni", "Fran"],
-            ["Marta", "Joni", "Fran", "Linda"],
-            ["Marta", "Fran", "Linda", "Joni"],
-        ]
 
         for voter_index in range(0, voter_num):
-            for name in votes_cast[voter_index]:
+            for name in self.votes_to_cast[voter_index]:
                 self.model.vote(voter_index, name)
 
         self.model.tabulate()
@@ -68,3 +61,6 @@ class TestRunoff(unittest.TestCase):
         actual = self.model.candidates.values()
         for vote, candidate_vote in zip(expected.values(), actual):
             self.assertEqual(vote, candidate_vote.votes)
+
+    def test_that_the_smallest_vote_is_reported_correctly(self):
+        pass
