@@ -1,18 +1,23 @@
+import candidate_class as candidate
+
+
 class Runoff:
-    """Represents a runoff voting scenario.
+    """Represents a runoff voting scenario."""
 
-    Note: Instead of a candidate being represented by a class,
-    candidate properties are represented as a dictionary of dictionaries.
-    """
+    def __init__(self, candidates_names: list[str], voter_number: int) -> None:
+        self.candidates: list[candidate.Candidate] = []
+        self.populate_candidates(candidates_names)
+        self.candidate_count = len(self.candidates)
+        self.voter_count = voter_number
+        self.voter_prefs = [[] for x in range(0, voter_number)]
 
-    def __init__(self):
-        pass
+    def populate_candidates(self, list_of_names: list[str]) -> None:
+        """Creates candidates, and populates the candidates list, using the
+        provided list of names."""
 
-    def populate_candidates(self, candidates_list: list[str]) -> None:
-        """Populates the candidates dictionary, using the provided list of
-        names."""
-
-        pass
+        for name in list_of_names:
+            this_candidate = candidate.Candidate(name)
+            self.candidates.append(this_candidate)
 
     def get_preferences_and_cast_votes(self) -> None:
         """Stores each voter's preferences for all candidates."""
