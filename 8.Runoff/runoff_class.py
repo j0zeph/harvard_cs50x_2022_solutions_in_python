@@ -59,13 +59,21 @@ class Runoff:
     def is_tie(self, minimum: int) -> bool:
         """Returns whether the election is tied between all candidates."""
 
-        pass
+        for person in self.candidates.values():
+            if (not person.votes == minimum) and (not person.eliminated):
+                return False
+        return True
 
     def find_minimum(self) -> int:
         """Returns the minimum number of votes any remaining candidate has."""
 
+        # sort candidates by ascending votes
         sorted_votes = sorted(self.candidates.values(), key=lambda x: x.votes)
-        return sorted_votes[0].votes
+
+        # only keep candidates that are not yet eliminated
+        minimum_votes = list(filter(lambda x: not x.eliminated, sorted_votes))
+
+        return minimum_votes[0].votes
 
     def eliminate(self) -> None:
         """Eliminate the candidate (or candidates) in last place"""

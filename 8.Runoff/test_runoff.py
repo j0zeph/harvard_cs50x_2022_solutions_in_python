@@ -93,3 +93,59 @@ class TestRunoff(unittest.TestCase):
         expected_minimum = 1
 
         self.assertEqual(expected_minimum, self.model.find_minimum())
+
+    def test_that_a_tied_election_is_recognized(self):
+        voter_number = 3
+        self.model = runoff.Runoff(self.candidates, voter_number)
+
+        votes_to_cast = [
+            ["Joni", "Marta", "Fran", "Linda"],
+            ["Fran", "Marta", "Fran", "Linda"],
+            ["Joni", "Linda", "Joni", "Fran"],
+        ]
+
+        # Artificially eliminate Joni
+        self.model.candidates["Joni"].eliminated = True
+
+        # cast votes
+        for voter_index in range(0, voter_number):
+            for name in votes_to_cast[voter_index]:
+                self.model.vote(voter_index, name)
+        minimum_vote = self.model.find_minimum()
+
+        # Marta has 0 votes
+        self.assertEqual(minimum_vote, 0)
+
+        self.assertTrue(self.model.is_tie(minimum_vote))
+
+        # reset
+
+        new_candidates = ["Joni", "Marta", "Meg", "Fran", "Linda", "Ransom"]
+        new_voter_number = 4
+        self.model = runoff.Runoff(new_candidates, new_voter_number)
+
+        votes_to_cast = [
+            ["Joni", "Marta", "Meg", "Fran", "Linda", "Ransom"],
+            ["Fran", "Joni", "Ransom", "Marta", "Meg", "Linda"],
+            ["Joni", "Linda", "Marta", "Ransom", "Fran", "Meg"],
+            ["Meg", "Linda", "Joni", "Marta", "Ransom", "Fran"],
+        ]
+
+        # cast votes
+        for voter_index in range(0, new_voter_number):
+            for name in votes_to_cast[voter_index]:
+                self.model.vote(voter_index, name)
+
+        # Artificially eliminate Joni and Fran
+        self.model.candidates["Joni"].eliminated = True
+        self.model.candidates["Fran"].eliminated = True
+
+        self.model.tabulate()
+
+        minimum_vote = self.model.find_minimum()
+
+        # Joni and Fran's 0 votes do not count, because they are eliminated.
+        self.assertEqual(minimum_vote, 1)
+
+        self.assertTrue(self.model.is_tie(minimum_vote))
+
