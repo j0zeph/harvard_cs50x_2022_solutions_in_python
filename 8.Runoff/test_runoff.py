@@ -17,6 +17,11 @@ class TestRunoff(unittest.TestCase):
             ["Marta", "Fran", "Linda", "Joni"],
         ]
 
+        # cast votes
+        for voter_index in range(0, self.voter_number):
+            for name in self.votes_to_cast[voter_index]:
+                self.model.vote(voter_index, name)
+
     def test_that_candidates_are_populated_correctly(self):
         candidate_names = self.model.candidates.keys()
         for name, person in zip(self.candidates, candidate_names):
@@ -39,21 +44,15 @@ class TestRunoff(unittest.TestCase):
             self.assertEqual(validity, model.candidate_is_valid(person))
 
     def test_that_voter_preferences_are_recorded_correctly(self):
-        voter_num = self.voter_number
-
-        for voter_index in range(0, voter_num):
-            for name in self.votes_to_cast[voter_index]:
-                self.model.vote(voter_index, name)
+        """Checks that ranks of candidates chosen by each voter are
+        accurately recorded."""
 
         expected = self.votes_to_cast
         self.assertEqual(expected, self.model.voter_prefs)
 
     def test_that_votes_are_tabulated_correctly(self):
-        voter_num = self.voter_number
-
-        for voter_index in range(0, voter_num):
-            for name in self.votes_to_cast[voter_index]:
-                self.model.vote(voter_index, name)
+        """Checks that the vote counts for the highest preference candidates
+        are updated accurately."""
 
         self.model.tabulate()
 
@@ -63,4 +62,12 @@ class TestRunoff(unittest.TestCase):
             self.assertEqual(vote, candidate_vote.votes)
 
     def test_that_the_smallest_vote_is_reported_correctly(self):
-        pass
+        """Checks that the smallest number of votes that any remaining (
+        non-eliminated) candidates is returned."""
+
+        self.model.tabulate()
+
+        # Fran has no votes.
+        expected_minimum = 0
+
+        self.assertEqual(expected_minimum, self.model.find_minimum())

@@ -61,10 +61,11 @@ class Runoff:
 
         pass
 
-    def find_minimum(self) -> None:
+    def find_minimum(self) -> int:
         """Returns the minimum number of votes any remaining candidate has."""
 
-        pass
+        sorted_votes = sorted(self.candidates.values(), key=lambda x: x.name)
+        return sorted_votes[0].votes
 
     def eliminate(self) -> None:
         """Eliminate the candidate (or candidates) in last place"""
