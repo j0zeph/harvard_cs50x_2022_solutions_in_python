@@ -75,10 +75,13 @@ class Runoff:
 
         return minimum_votes[0].votes
 
-    def eliminate(self) -> None:
-        """Eliminate the candidate (or candidates) in last place"""
+    def eliminate(self, minimum: int) -> None:
+        """Eliminate the candidate (or candidates) in last place."""
 
-        pass
+        if not self.is_tie(minimum):
+            for person in self.candidates.values():
+                if person.votes == minimum:
+                    person.eliminated = True
 
     def print_winner(self):
         """Print the winner of the election, if there is one."""

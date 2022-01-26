@@ -149,3 +149,54 @@ class TestRunoff(unittest.TestCase):
 
         self.assertTrue(self.model.is_tie(minimum_vote))
 
+    def test_that_a_candidate_in_last_place_is_eliminated(self):
+        """Checks that a candidate/candidates with the fewest number of votes
+        are eliminated."""
+
+        # reset
+
+        new_candidates = ["Marta", "Joni", "Fran", "Linda", "Meg"]
+        new_voter_number = 4
+        self.model = runoff.Runoff(new_candidates, new_voter_number)
+
+        votes_to_cast = [
+            ["Marta", "Joni", "Fran", "Linda", "Meg"],
+            ["Joni", "Marta", "Meg", "Fran", "Linda"],
+            ["Linda", "Marta", "Joni", "Meg", "Fran"],
+            ["Fran", "Joni", "Meg", "Marta", "Linda"],
+        ]
+        #
+        # Mar: 1
+        # Jon: 1
+        # Fra: 1
+        # Lin: 1
+        # Meg: 0
+
+        # cast votes
+        for voter_index in range(0, new_voter_number):
+            for name in votes_to_cast[voter_index]:
+                self.model.vote(voter_index, name)
+
+        self.model.tabulate()
+
+        self.model.eliminate(self.model.find_minimum())
+
+        eliminated = {
+            "Marta": False,
+            "Joni": False,
+            "Fran": False,
+            "Linda": False,
+            "Meg": True,
+        }
+
+        for expected, actual in zip(eliminated.values(),
+                                    self.model.candidates.values()):
+            self.assertEqual(expected, actual.eliminated)
+
+        self.model.tabulate()
+
+        self.model.eliminate(self.model.find_minimum())
+
+        for expected, actual in zip(eliminated.values(),
+                                    self.model.candidates.values()):
+            self.assertEqual(expected, actual.eliminated)
