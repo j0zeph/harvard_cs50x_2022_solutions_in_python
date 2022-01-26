@@ -71,3 +71,25 @@ class TestRunoff(unittest.TestCase):
         expected_minimum = 0
 
         self.assertEqual(expected_minimum, self.model.find_minimum())
+
+        votes_to_cast = [
+            ["Marta", "Joni", "Fran", "Linda"],
+            ["Joni", "Marta", "Fran", "Linda"],
+            ["Linda", "Marta", "Joni", "Fran"],
+            ["Fran", "Joni", "Marta", "Linda"],
+            ["Marta", "Fran", "Linda", "Joni"],
+        ]
+
+        # reset voter prefs
+        self.model.voter_prefs = [[] for x in range(0, self.voter_number)]
+
+        # cast votes
+        for voter_index in range(0, self.voter_number):
+            for name in votes_to_cast[voter_index]:
+                self.model.vote(voter_index, name)
+
+        self.model.tabulate()
+
+        expected_minimum = 1
+
+        self.assertEqual(expected_minimum, self.model.find_minimum())
