@@ -195,3 +195,17 @@ class TestRunoff(unittest.TestCase):
         for expected, actual in zip(eliminated.values(),
                                     self.model.candidates.values()):
             self.assertEqual(expected, actual.eliminated)
+
+    def test_that_winners_are_printed_correctly(self):
+
+        self.model.tabulate()
+        with mock.patch("sys.stdout", new=io.StringIO()) as out:
+            self.model.print_winner()
+
+        assert out.getvalue() == "Marta\n"
+
+        # reset
+
+        self.model = runoff.Runoff(self.candidates, self.voter_number)
+
+

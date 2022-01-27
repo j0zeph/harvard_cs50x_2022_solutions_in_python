@@ -80,12 +80,14 @@ class Runoff:
                 if person.votes == minimum:
                     person.eliminated = True
 
-    def print_winner(self):
+    def print_winner(self) -> bool:
         """Print the winner of the election, if there is one."""
 
-        pass
+        half_the_vote = self.voter_count / 2
 
-    def run_runoff(self) -> None:
-        """Initiates the runoff voting process."""
+        for person in sorted(self.candidates.values(), key=lambda x: x.votes):
+            if (not person.eliminated) and (person.votes > half_the_vote):
+                print(person.name)
+                return True
+        return False
 
-        pass
