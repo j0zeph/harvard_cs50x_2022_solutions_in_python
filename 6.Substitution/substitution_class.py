@@ -1,4 +1,4 @@
-import substitution_utils
+import string
 
 
 class Substitution:
@@ -7,7 +7,7 @@ class Substitution:
         self.key = ""
         self.plaintext = ""
         self.ciphertext = ""
-        self.alphabet = substitution_utils.ALPHABET
+        self.alphabet = string.ascii_lowercase
 
     def encipher(self) -> None:
         """Enciphers the given plaintext using the given key, by way of
