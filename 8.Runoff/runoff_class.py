@@ -1,11 +1,17 @@
-import candidate_class as candidate
+class Candidate:
+    """A candidate has a name, votes, and an `eliminated` status."""
+
+    def __init__(self, name: str) -> None:
+        self.name = name
+        self.votes = 0
+        self.eliminated = False
 
 
 class Runoff:
     """Represents a runoff voting scenario."""
 
     def __init__(self, candidates_names: list[str], voter_number: int) -> None:
-        self.candidates: dict[str, candidate.Candidate] = {}
+        self.candidates: dict[str, Candidate] = {}
         self.populate_candidates(candidates_names)
         self.voter_count = voter_number
         self.voter_prefs = [[] for x in range(0, voter_number)]
@@ -15,7 +21,7 @@ class Runoff:
         provided list of names."""
 
         for name in list_of_names:
-            this_candidate = candidate.Candidate(name)
+            this_candidate = Candidate(name)
             self.candidates[name] = this_candidate
 
     def get_preferences(self) -> None:

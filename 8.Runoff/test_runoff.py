@@ -1,6 +1,7 @@
-import candidate_class as candidate
+import io
 import runoff_class as runoff
 import unittest
+from unittest import mock
 
 
 class TestRunoff(unittest.TestCase):
@@ -165,12 +166,6 @@ class TestRunoff(unittest.TestCase):
             ["Linda", "Marta", "Joni", "Meg", "Fran"],
             ["Fran", "Joni", "Meg", "Marta", "Linda"],
         ]
-        #
-        # Mar: 1
-        # Jon: 1
-        # Fra: 1
-        # Lin: 1
-        # Meg: 0
 
         # cast votes
         for voter_index in range(0, new_voter_number):
