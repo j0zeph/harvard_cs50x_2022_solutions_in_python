@@ -24,19 +24,9 @@ class Runoff:
             this_candidate = Candidate(name)
             self.candidates[name] = this_candidate
 
-    def get_preferences(self) -> None:
-        """Stores each voter's preferences for all candidates."""
-
-        voters = list(range(0, self.voter_count))
-        rank_numbers = list(range(0, len(self.candidates)))
-
-        for voter in voters:
-            for rank in rank_numbers:
-                name = input(f"Rank {rank + 1}: ")
-                self.vote(voter, name)
-
     def vote(self, voter: int, name: str) -> bool:
         """Records preference if vote is valid."""
+
         if self.candidate_is_valid(name):
             self.voter_prefs[voter].append(name)
             return True
