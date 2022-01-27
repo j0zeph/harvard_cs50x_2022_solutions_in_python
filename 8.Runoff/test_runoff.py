@@ -199,6 +199,7 @@ class TestRunoff(unittest.TestCase):
     def test_that_winners_are_printed_correctly(self):
 
         self.model.tabulate()
+
         with mock.patch("sys.stdout", new=io.StringIO()) as out:
             self.model.print_winner()
 
@@ -206,6 +207,44 @@ class TestRunoff(unittest.TestCase):
 
         # reset
 
-        self.model = runoff.Runoff(self.candidates, self.voter_number)
+        candidates = ["Alice", "Bob", "Charlie"]
+        new_voter_number = 9
+        self.model = runoff.Runoff(candidates, new_voter_number)
 
+        votes_to_cast = [
+            ["Alice", "Bob", "Charlie"],
+            ["Alice", "Bob", "Charlie"],
+            ["Bob", "Alice", "Charlie"],
+            ["Bob", "Alice", "Charlie"],
+            ["Bob", "Alice", "Charlie"],
+            ["Charlie", "Alice", "Bob"],
+            ["Charlie", "Alice", "Bob"],
+            ["Charlie", "Bob", "Alice"],
+            ["Charlie", "Bob", "Alice"],
+        ]
 
+        # cast votes
+        for voter_index in range(0, new_voter_number):
+            for name in votes_to_cast[voter_index]:
+                self.model.vote(voter_index, name)
+
+        self.model.tabulate()
+
+        eliminated = {
+            "Alice": True,
+            "Bob": False,
+            "Charlie": False,
+        }
+
+        self.model.eliminate(self.model.find_minimum())
+
+        for expected, actual in zip(eliminated.values(),
+                                    self.model.candidates.values()):
+            self.assertEqual(expected, actual.eliminated)
+
+        self.model.tabulate()
+
+        with mock.patch("sys.stdout", new=io.StringIO()) as out:
+            self.model.print_winner()
+
+        assert out.getvalue() == "Bob\n"
