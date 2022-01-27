@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 
-import caesar_utils as cu
 from sys import argv
 from caesar_class import Caesar
 
 
 def main():
-    check_argv()
+
+    if not argv_is_valid(argv):
+        exit("Usage: python caesar.py key")
+
     key = argv[1]
     caesar = Caesar(int(key))
     plain_text = input("plaintext: ")
@@ -17,10 +19,21 @@ def main():
     print()
 
 
-def check_argv() -> None:
-    if not cu.argv_is_valid(argv):
-        cu.remind_user_of_usage()
-        exit(1)
+def get_ascii_value(self, character):
+    """Returns the ASCII value of the character provided."""
+
+    return ord(character)
+
+
+def argv_is_valid(argv_list):
+    """Returns whether or not the commandline arguments provided are valid."""
+
+    try:
+        correct_length = len(argv_list) == 2
+        second_arg_is_numeric = argv_list[1].isnumeric()
+        return correct_length and second_arg_is_numeric
+    except IndexError:
+        return False
 
 
 if __name__ == "__main__":
