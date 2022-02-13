@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits>
 
 using namespace std;
 
@@ -15,7 +16,7 @@ int main(void)
         if(!cin)
         {
             cin.clear();
-            cin.ignore(500, '\n');
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
     }
     while (!(height >= 1 && height <= 8));
