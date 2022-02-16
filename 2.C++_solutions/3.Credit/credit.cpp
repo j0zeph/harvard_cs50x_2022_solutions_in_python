@@ -33,6 +33,8 @@ int main(void)
             cout << "INVALID";
     else
         cout << getCardIssuer(cardNum, length);
+
+    return 0;
 }
 
 
