@@ -2,17 +2,16 @@
 #include <iostream>
 #include <string>
 
-
 using namespace std;
 
-bool argvIsValid(int argc, char *argv[]);
+bool onlyDigits(int argc, char *argv[]);
 
 int main(int argc, char *argv[])
 {
-    if (!(argvIsValid(argc, argv)))
+    if (!(onlyDigits(argc, argv)))
     {
         cout << "Usage: ./caesar key";
-        return -1;
+        return 1;
     }
     
     return 0;
@@ -21,7 +20,7 @@ int main(int argc, char *argv[])
 
 // Returns whether the command-line arguments provided
 // are valid.
-bool argvIsValid(int argc, char *argv[])
+bool onlyDigits(int argc, char *argv[])
 {
     if (!(argc == 2))
         return false;
