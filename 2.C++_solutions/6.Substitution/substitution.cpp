@@ -1,4 +1,3 @@
-
 #include <cctype>
 #include <cstring>
 #include <iostream>
@@ -6,16 +5,16 @@
 
 using namespace std;
 
-const int LETTERS_IN_ALPHABET = 26;
-const int valueOfUpperA = 65;
-const int valueOfLowerA = 97;
+const int EXPECTED_ARGS = 2;
+const int ALPHABET_LEN = 26;
 
-char substitute(char ch, string key[]);
+bool keyIsValid(string key, int keyLen);
+char substitute(char ch, string key);
 
 int main(int argc, char *argv[])
 {
     // Check for correct number of commandline arguments.
-    if (argc != 2)
+    if (argc != EXPECTED_ARGS)
     {
         cout << "Usage: ./substitution key" << endl;
         return 1;
@@ -24,11 +23,33 @@ int main(int argc, char *argv[])
     string key = argv[1];
     int keyLen = static_cast<int>(key.length());
 
-    // Check the key has 26 characters.
-    if (keyLen != LETTERS_IN_ALPHABET)
+    if (!keyIsValid(key, keyLen))
+       return 1; 
+
+    string plaintext = "";
+    cout << "plaintext: ";
+    getline(cin, plaintext);
+
+    int plainLen = static_cast<int>(plaintext.length());
+
+    cout << "ciphertext: ";
+
+    for (int i = 0; i < plainLen; i++)
+        cout << substitute(plaintext[i], key);
+
+    cout << endl;
+
+    return 0;
+}
+
+
+// Returns whether the key is valid.
+bool keyIsValid(string key, int keyLen)
+{
+    if (keyLen != ALPHABET_LEN)
     {
         cout << "Key must contain 26 characters." << endl;
-        return 1;
+        return false;
     }
 
     // Check that key has only alphabetical characters.
@@ -36,8 +57,8 @@ int main(int argc, char *argv[])
     {
         if (!isalpha(key[1]))
         {
-            cout << "Key must not contain non-alphabetic characters.";
-            return 1;
+            cout << "Key must contain only alphabetic characters.";
+            return false;
         }
     }
 
@@ -49,49 +70,33 @@ int main(int argc, char *argv[])
             if (tolower(key[i]) == tolower(key[j]))
             {
                 cout << "Key must not contain duplicate letters." << endl;
-                return 1;
+                return false;
             }
         }
     }
 
-    string plaintext = "";
+    return true;
+}
 
-    // Get the plaintext, and encipher it.
-    cout << "plaintext: ";
-    getline(cin, plaintext);
 
-    cout << "ciphertext: ";
-
-    int plainLen = static_cast<int>(plaintext.length());
-
-    for (int i = 0; i < plainLen; i++)
+char substitute(char ch, string key)
+{
+    // Leave non-alphabetical characters unchanged
+    if (!isalpha(ch))
+        return ch;
+    else
     {
-        char ch = plaintext[i];
+        bool chIsUpper = isupper(ch);
 
-        // Leave non-alphabetical characters unchanged
-        if (!isalpha(ch))
-        {
-            cout << ch;
-        }
-        else
-        {
-            bool chIsUpper = isupper(ch);
+        // Get the alphabetical index of the provided char.
+        int alphaIndex = chIsUpper ? (ch - 'A') : (ch - 'a');
 
-            // Get the alphabetical index of the provided char, depending
-            // on whether or not the char is uppper or lower case.
-            int alphaIndex = chIsUpper ? (ch - valueOfUpperA) : (ch - valueOfLowerA);
+        // substitute this char with its counterpart in the key,
+        // while preserving case.
+        char keyString = key[alphaIndex];
 
-            // substitute this char with its counterpart in the key,
-            // while preserving case.
-            char keyString = key[alphaIndex];
+        char keyChar = chIsUpper ? (toupper(keyString)) : (tolower(keyString));
 
-            char keyChar = chIsUpper ? (toupper(keyString)) : (tolower(keyString));
-
-            cout << keyChar;
-        }
+        return keyChar;
     }
-
-    cout << endl;
-
-    return 0;
 }
