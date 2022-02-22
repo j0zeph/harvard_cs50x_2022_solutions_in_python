@@ -1,7 +1,10 @@
-# Harvard CS50 Problem Sets 2022 <br><br>
+# Harvard CS50x Problem Sets 2022 <br><br>
 
 Solutions to Harvard's CS50 Problem Sets for 2022,<br>
 implemented in both Python and C++.<br>
+
+Where distribution code has been provided, the C++ solutions<br>
+attempt to match the provided C code.<br><br>
 
 These Problem Sets, and their descriptions can be found<br>
 (at the time of writing) here: <br><br>
