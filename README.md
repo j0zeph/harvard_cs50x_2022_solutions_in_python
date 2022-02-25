@@ -1,13 +1,15 @@
-# Harvard CS50x Problem Sets 2022 <br><br>
+# Harvard CS50x Psets and Labs 2022 <br><br>
 
-Solutions to Harvard's CS50 Problem Sets for 2022,<br>
+Solutions to Harvard's CS50x's Problem Sets and labs for 2022,<br>
 implemented in both Python and C++.<br>
 
 Where distribution code has been provided, the C++ solutions<br>
-attempt to match the provided C code.<br><br>
+attempt to match the provided C code in structure,<br>
+save for any language-specific differences.<br><br>
 
-These Problem Sets, and their descriptions can be found<br>
+The Problem Sets specifications can be found<br>
 (at the time of writing) here: <br><br>
+---
 ---
 
 ### <u>**Problem Set 0:**</u><br>
@@ -110,4 +112,67 @@ These Problem Sets, and their descriptions can be found<br>
 * #### <u>Finance<br>
   * <https://cs50.harvard.edu/x/2022/psets/9/finance/>
     <br>
+<br><br>
 ---
+---
+---
+---
+---
+<br><br>
+
+The Labs specifications can be found<br>
+(at the time of writing) here: <br><br>
+---
+---
+
+### <u>**Lab 1: No lab**</u><br>
+---
+<br>
+
+### <u>**Lab 2: Scrabble**</u><br>
+ * #### <https://cs50.harvard.edu/x/2022/labs/2/> 
+   <br>
+---
+<br>
+
+### <u>**Lab 3: Sort**</u><br>
+ * #### <https://cs50.harvard.edu/x/2022/labs/3/> 
+   <br>
+---
+<br>
+
+### <u>**Lab 4: Volume**</u><br>
+ * #### <https://cs50.harvard.edu/x/2022/labs/4/> 
+   <br>
+---
+<br>
+
+### <u>**Lab 5: Inheritance**</u><br>
+ * #### <https://cs50.harvard.edu/x/2022/labs/5/> 
+   <br>
+---
+<br>
+
+### <u>**Lab 6: World Cup**</u><br>
+ * #### <https://cs50.harvard.edu/x/2022/labs/6/> 
+   <br>
+---
+<br>
+
+### <u>**Lab 7: Songs**</u><br>
+ * #### <https://cs50.harvard.edu/x/2022/labs/7/> 
+   <br>
+---
+<br>
+
+### <u>**Lab 8: Trivia**</u><br>
+ * #### <https://cs50.harvard.edu/x/2022/labs/8/> 
+   <br>
+---
+<br>
+
+### <u>**Lab 9: Birthdays**</u><br>
+ * #### <https://cs50.harvard.edu/x/2022/labs/9/> 
+   <br>
+---
+<br>
