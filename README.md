@@ -1,16 +1,26 @@
-# Harvard CS50x Psets and Labs 2022 <br><br>
+# Harvard CS50x 2022 Psets and Labs solutions.<br><br>
 
-Solutions to Harvard's CS50x's Problem Sets and labs for 2022,<br>
-implemented in both Python and C++.<br>
 
-Where distribution code has been provided, the C++ solutions<br>
-attempt to match the provided C code in structure,<br>
-save for any language-specific differences.<br><br>
+### Solutions to Harvard's CS50x's Problem Sets and labs for 2022,<br>
+### implemented in both <u><i>Python and C++.</i></u><br><br>
 
-The Problem Sets specifications can be found<br>
-(at the time of writing) here: <br><br>
+### Where distribution code has been provided, the C++ solutions<br>
+### attempt to match the provided C code in structure,<br>
+### save for any language-specific differences.<br><br>
+
+### The Python solutions use "Pythonic" data structures that
+### might be absent from problem descriptions stated using C.<br><br>
+
+### Where the problem set or lab is originally stated using Python,
+### the solutions stick to the specifications as expected.<br><br> 
 ---
 ---
+<br><br>
+
+> ### Problem Sets specifications can be found<br>
+> ### (at the time of writing) here: <br><br>
+
+<br><br>
 
 ### <u>**Problem Set 0:**</u><br>
 * #### <u>Hello</u><br>
@@ -120,10 +130,9 @@ The Problem Sets specifications can be found<br>
 ---
 <br><br>
 
-The Labs specifications can be found<br>
-(at the time of writing) here: <br><br>
----
----
+> ### Labs specifications can be found<br>
+> ### (at the time of writing) here: <br><br>
+<br><br>
 
 ### <u>**Lab 1: No lab**</u><br>
 ---
