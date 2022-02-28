@@ -12,8 +12,8 @@ int preferences[MAX][MAX];
 // locked[i][j] means i is locked in over j
 bool locked[MAX][MAX];
 
-// Each pair has a winner, loser
-struct pair
+// Each candidate_pair has a winner, loser
+struct candidate_pair
 {
     int winner;
     int loser;
@@ -21,7 +21,10 @@ struct pair
 
 // Array of candidates
 string candidates[MAX];
-pair pairs[MAX * (MAX - 1) / 2];
+
+// changed to `candidate_pair` because compiler
+// gcc insisted that `pair` was too ambiguous.
+candidate_pair pairs[MAX * (MAX - 1) / 2];
 
 int pair_count;
 int candidate_count;
