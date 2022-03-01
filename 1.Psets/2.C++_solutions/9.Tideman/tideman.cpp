@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <iomanip> // [DEBUG]
 
 using namespace std;
 
@@ -144,7 +143,40 @@ void record_preferences(int ranks[])
 // Record pairs of candidates where one is preferred over the other
 void add_pairs(void)
 {
-    // TODO
+    // The useful part of the preferences array is always
+    // (candidate_count * candidate_count).
+    for (int i = 0; i < candidate_count; i++)
+    {
+        candidate_pair this_pair;
+
+        // Avoid repeating pairs, and the i == j case
+        for (int j = i + 1; j < candidate_count; j++)
+        {
+            if (preferences[i][j] > preferences[j][i])
+            {
+                // winner is candidate i
+                this_pair.winner = i;
+                this_pair.loser = j;
+
+                pairs[pair_count] = this_pair;
+                pair_count++;
+            }
+
+            else if (preferences[i][j] < preferences[j][i])
+            {
+                // winner is candidate j
+                this_pair.winner = j;
+                this_pair.loser = i;
+
+                pairs[pair_count] = this_pair;
+                pair_count++;
+            }
+
+            else
+                // Do nothing for a tie between pairs
+                continue;
+        }
+    }
     return;
 }
 
