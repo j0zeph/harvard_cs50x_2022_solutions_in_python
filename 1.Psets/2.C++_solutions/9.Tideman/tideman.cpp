@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <iomanip> // [DEBUG]
 
 using namespace std;
 
@@ -22,8 +23,8 @@ struct candidate_pair
 // Array of candidates
 string candidates[MAX];
 
-// changed to `candidate_pair` because compiler
-// gcc insisted that `pair` was too ambiguous.
+// changed to `candidate_pair` because the gcc compiler
+// insisted that `pair` was too ambiguous.
 candidate_pair pairs[MAX * (MAX - 1) / 2];
 
 int pair_count;
@@ -53,6 +54,7 @@ int main(int argc, char *argv[])
         cout << "Maximum number of candidates is " << MAX << "\n";
         return 2;
     }
+
     for (int i = 0; i < candidate_count; i++)
     {
         candidates[i] = argv[i + 1];
@@ -82,7 +84,7 @@ int main(int argc, char *argv[])
         for (int j = 0; j < candidate_count; j++)
         {
             string name;
-            cout << "Rank " << j + 1;
+            cout << "Rank " << j + 1 << ": ";
             cin >> name;
 
             if (!vote(j, name, ranks))
@@ -107,14 +109,35 @@ int main(int argc, char *argv[])
 // Update ranks given a new vote
 bool vote(int rank, string name, int ranks[])
 {
-    // TODO
+    // make sure name is valid
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (name == candidates[i])
+        {
+            ranks[rank] = i;
+            return true;
+        }
+    }
     return false;
 }
 
 // Update preferences given one voter's ranks
 void record_preferences(int ranks[])
 {
-    // TODO
+    for (int i = 0; i < candidate_count; i++)
+    {
+        for (int j = i; j < candidate_count; j++)
+        {
+            // A candidate cannot be preferred over themselves
+            if (i == j)
+                preferences[i][j] = 0;
+            else
+            {
+                // Add one more person who prefers candidate i over j
+                preferences[ranks[i]][ranks[j]] += 1;
+            }
+        }
+    }
     return;
 }
 
