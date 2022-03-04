@@ -183,19 +183,34 @@ void add_pairs(void)
 // Sort pairs in decreasing order by strength of victory
 void sort_pairs(void)
 {
-    // sort by looking at the winners
-    // using selection sort
+    // Use selection sort to sort the pairs array from highest
+    // to lowest strength of victory.
     for (int i = 0; i < pair_count - 1; i++)
     {
+        candidate_pair this_pair = pairs[i];
+        int this_winner = this_pair.winner;
+        int this_loser = this_pair.loser;
+
+        // How many voters preferred the winner in the pair
+        int max_strength = preferences[this_winner][this_loser];
+
         int max_index = i;
 
         for (int j = i + 1 ; j < pair_count; j++ )
         {
-            if (pairs[j].winner > pairs[max_index].winner)
+            candidate_pair next_pair = pairs[j];
+            int next_winner = next_pair.winner;
+            int next_loser = next_pair.loser;
+
+            if (preferences[next_winner][next_loser] > 
+                preferences[this_winner][this_loser])
+            {
+                max_strength = preferences[next_winner][next_loser];
                 max_index = j;
+            }
         }
 
-        // swap values as needed
+        // swap values
         if (i != max_index)
         {
             candidate_pair temp = pairs[i];
