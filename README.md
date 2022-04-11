@@ -3,6 +3,16 @@
 
 ### Solutions to Harvard's CS50x's Problem Sets and labs for 2022,<br>
 ### implemented in both <u><i>Python and C++.</i></u><br><br>
+---
+> ### <span style="color:red">Note: On Academic Dishonesty.</span>
+
+### If you were planning to take (or are currently taking CS50), you
+### are encouraged to first submit your psets before looking at
+### solutions posted here.<br><br>
+### If unsure about what counts as dishonesty, look here:
+### <https://cs50.harvard.edu/x/2022/honesty/>
+---
+<br>
 
 ### Where distribution code has been provided, the C++ solutions<br>
 ### attempt to match the provided C code in structure,<br>
@@ -14,7 +24,7 @@
 ### Where the problem set or lab is originally stated using Python,
 ### the solutions stick to the specifications as expected.<br><br> 
 ---
----
+
 <br><br>
 
 > ### Problem Sets specifications can be found<br>
