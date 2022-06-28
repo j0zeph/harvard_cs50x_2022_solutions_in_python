@@ -3,18 +3,17 @@
 def main():
 	while True:
 		height = input("Height: ")
-		proceed_to_print = check_height_is_valid(height)
-		if proceed_to_print:
+		if is_valid(height):
 			print_pyramid(int(height))
 			break
 
 
-def check_height_is_valid(height) -> bool:
+def is_valid(height) -> bool:
 	"""Checks if the height entered is between 1 and 8 inclusive."""
 
 	try:
 		h = int(height)
-		return h >= 1 and h <= 8
+		return 1 <= h <= 8
 	except ValueError:
 		return False
 
